@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['mentor_id'])){
-   $mentor_id = $_COOKIE['mentor_id'];
+if(isset($_COOKIE['tutor_id'])){
+   $tutor_id = $_COOKIE['tutor_id'];
 }else{
-   $mentor_id = '';
+   $tutor_id = '';
    header('location:login.php');
 }
 
@@ -39,8 +39,8 @@ if(isset($_POST['submit'])){
    if($thumb_size > 2000000){
       $message[] = 'image size is too large!';
    }else{
-      $add_playlist = $conn->prepare("INSERT INTO `content`(id, mentor_id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?,?)");
-      $add_playlist->execute([$id, $mentor_id, $playlist, $title, $description, $rename_video, $rename_thumb, $status]);
+      $add_playlist = $conn->prepare("INSERT INTO `content`(id, tutor_id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?,?)");
+      $add_playlist->execute([$id, $tutor_id, $playlist, $title, $description, $rename_video, $rename_thumb, $status]);
       move_uploaded_file($thumb_tmp_name, $thumb_folder);
       move_uploaded_file($video_tmp_name, $video_folder);
       $message[] = 'new course uploaded!';
@@ -90,8 +90,8 @@ if(isset($_POST['submit'])){
       <select name="playlist" class="box" required>
          <option value="" disabled selected>--select playlist</option>
          <?php
-         $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE mentor_id = ?");
-         $select_playlists->execute([$mentor_id]);
+         $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
+         $select_playlists->execute([$tutor_id]);
          if($select_playlists->rowCount() > 0){
             while($fetch_playlist = $select_playlists->fetch(PDO::FETCH_ASSOC)){
          ?>

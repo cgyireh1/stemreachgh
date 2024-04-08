@@ -31,10 +31,8 @@ $total_bookmarked = $select_bookmark->rowCount();
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>profile</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -49,9 +47,9 @@ $total_bookmarked = $select_bookmark->rowCount();
    <div class="details">
 
       <div class="user">
-         <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
+         <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="profile-image">
          <h3><?= $fetch_profile['name']; ?></h3>
-         <span><?= $fetch_profile['profession']; ?></span>
+         <p>student</p>
          <a href="update.php" class="inline-btn">update profile</a>
       </div>
 
@@ -109,7 +107,17 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 
 
+<!-- footer section starts  -->
 
+<footer class="footer">
+
+   &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!
+
+</footer>
+
+<!-- footer section ends -->
+
+<!-- custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>

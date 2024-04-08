@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2024 at 05:35 PM
+-- Generation Time: Sep 30, 2022 at 05:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -53,7 +53,7 @@ CREATE TABLE `comments` (
 -- Table structure for table `contact`
 --
 
-CREATE TABLE = `contact` (
+CREATE TABLE `contact` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `number` int(10) NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE `mentors` (
 CREATE TABLE `users` (
   `id` varchar(20) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `role` varchar(100) NOT NULL,
+  `profession` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL

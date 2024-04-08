@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['mentor_id'])){
-   $mentor_id = $_COOKIE['mentor_id'];
+if(isset($_COOKIE['tutor_id'])){
+   $tutor_id = $_COOKIE['tutor_id'];
 }else{
-   $mentor_id = '';
+   $tutor_id = '';
    header('location:login.php');
 }
 
@@ -56,15 +56,15 @@ if(isset($_POST['delete_comment'])){
    
    <div class="show-comments">
       <?php
-         $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE mentor_id = ?");
-         $select_comments->execute([$mentor_id]);
+         $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ?");
+         $select_comments->execute([$tutor_id]);
          if($select_comments->rowCount() > 0){
             while($fetch_comment = $select_comments->fetch(PDO::FETCH_ASSOC)){
                $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ?");
                $select_content->execute([$fetch_comment['content_id']]);
                $fetch_content = $select_content->fetch(PDO::FETCH_ASSOC);
       ?>
-      <div class="box" style="<?php if($fetch_comment['mentor_id'] == $mentor_id){echo 'order:-1;';} ?>">
+      <div class="box" style="<?php if($fetch_comment['tutor_id'] == $tutor_id){echo 'order:-1;';} ?>">
          <div class="content"><span><?= $fetch_comment['date']; ?></span><p> - <?= $fetch_content['title']; ?> - </p><a href="view_content.php?get_id=<?= $fetch_content['id']; ?>">view content</a></div>
          <p class="text"><?= $fetch_comment['comment']; ?></p>
          <form action="" method="post">

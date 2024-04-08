@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['mentor_id'])){
-   $mentor_id = $_COOKIE['mentor_id'];
+if(isset($_COOKIE['tutor_id'])){
+   $tutor_id = $_COOKIE['tutor_id'];
 }else{
-   $mentor_id = '';
+   $tutor_id = '';
    header('location:login.php');
 }
 
@@ -69,8 +69,8 @@ if(isset($_POST['delete_video'])){
    </div>
 
    <?php
-      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE mentor_id = ? ORDER BY date DESC");
-      $select_videos->execute([$mentor_id]);
+      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ? ORDER BY date DESC");
+      $select_videos->execute([$tutor_id]);
       if($select_videos->rowCount() > 0){
          while($fecth_videos = $select_videos->fetch(PDO::FETCH_ASSOC)){ 
             $video_id = $fecth_videos['id'];

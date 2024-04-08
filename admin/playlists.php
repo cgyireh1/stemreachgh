@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['mentor_id'])){
-   $mentor_id = $_COOKIE['mentor_id'];
+if(isset($_COOKIE['tutor_id'])){
+   $tutor_id = $_COOKIE['tutor_id'];
 }else{
-   $mentor_id = '';
+   $tutor_id = '';
    header('location:login.php');
 }
 
@@ -13,8 +13,8 @@ if(isset($_POST['delete'])){
    $delete_id = $_POST['playlist_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
 
-   $verify_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND mentor_id = ? LIMIT 1");
-   $verify_playlist->execute([$delete_id, $mentor_id]);
+   $verify_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND tutor_id = ? LIMIT 1");
+   $verify_playlist->execute([$delete_id, $tutor_id]);
 
    if($verify_playlist->rowCount() > 0){
 
@@ -67,8 +67,8 @@ if(isset($_POST['delete'])){
       </div>
 
       <?php
-         $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE mentor_id = ? ORDER BY date DESC");
-         $select_playlist->execute([$mentor_id]);
+         $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ? ORDER BY date DESC");
+         $select_playlist->execute([$tutor_id]);
          if($select_playlist->rowCount() > 0){
          while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
             $playlist_id = $fetch_playlist['id'];

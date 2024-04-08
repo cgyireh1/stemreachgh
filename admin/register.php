@@ -24,19 +24,19 @@ if(isset($_POST['submit'])){
    $image_tmp_name = $_FILES['image']['tmp_name'];
    $image_folder = '../uploaded_files/'.$rename;
 
-   $select_mentor = $conn->prepare("SELECT * FROM `mentors` WHERE email = ?");
-   $select_mentor->execute([$email]);
+   $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE email = ?");
+   $select_tutor->execute([$email]);
    
-   if($select_mentor->rowCount() > 0){
+   if($select_tutor->rowCount() > 0){
       $message[] = 'email already taken!';
    }else{
       if($pass != $cpass){
          $message[] = 'confirm passowrd not matched!';
       }else{
-         $insert_mentor = $conn->prepare("INSERT INTO `mentors`(id, name, profession, email, password, image) VALUES(?,?,?,?,?,?)");
-         $insert_mentor->execute([$id, $name, $profession, $email, $cpass, $rename]);
+         $insert_tutor = $conn->prepare("INSERT INTO `tutors`(id, name, profession, email, password, image) VALUES(?,?,?,?,?,?)");
+         $insert_tutor->execute([$id, $name, $profession, $email, $cpass, $rename]);
          move_uploaded_file($image_tmp_name, $image_folder);
-         $message[] = 'new mentor registered! please login now';
+         $message[] = 'new tutor registered! please login now';
       }
    }
 
@@ -83,7 +83,7 @@ if(isset($message)){
       <div class="flex">
          <div class="col">
             <p>your name <span>*</span></p>
-            <input type="text" name="name" placeholder="eneter your name" maxlength="100" required class="box">
+            <input type="text" name="name" placeholder="eneter your name" maxlength="50" required class="box">
             <p>your profession <span>*</span></p>
             <select name="profession" class="box" required>
                <option value="" disabled selected>-- select your profession</option>
@@ -98,10 +98,9 @@ if(isset($message)){
                <option value="doctor">doctor</option>
                <option value="journalist">journalist</option>
                <option value="photographer">photographer</option>
-               <option value="none">none</option>
             </select>
             <p>your email <span>*</span></p>
-            <input type="email" name="email" placeholder="enter your email" maxlength="100" required class="box">
+            <input type="email" name="email" placeholder="enter your email" maxlength="50" required class="box">
          </div>
          <div class="col">
             <p>your password <span>*</span></p>

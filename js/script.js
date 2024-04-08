@@ -1,3 +1,5 @@
+
+
 let body = document.body;
 
 let profile = document.querySelector('.header .flex .profile');
@@ -7,6 +9,12 @@ document.querySelector('#user-btn').onclick = () =>{
    searchForm.classList.remove('active');
 }
 
+let searchForm = document.querySelector('.header .flex .search-form');
+
+document.querySelector('#search-btn').onclick = () =>{
+   searchForm.classList.toggle('active');
+   profile.classList.remove('active');
+}
 
 
 document.querySelectorAll('input[type="number"]').forEach(InputNumber => {

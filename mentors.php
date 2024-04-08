@@ -16,33 +16,38 @@ if(isset($_COOKIE['user_id'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Mentors</title>
+   <title>mentors</title>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
+   <link rel="stylesheet" href="css/mentors.css">
    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
-
 <?php include 'components/user_header.php'; ?>
 
-<!-- teachers section starts  -->
+<!-- mentors section starts  -->
 
-<section class="mentors">
+<section class="mentors" id=men>
 
    <h1 class="heading">Mentorship Hub</h1>
 
+   <div class="intro offer">
+   <h3>Welcome to our STEM Mentorship Hub!</h3>
+      <p>We believe in the power of mentorship to inspire and empower the next generation of STEM leaders. Our mentorship program connects aspiring individuals with experienced professionals in science, technology, engineering, and mathematics, creating a supportive environment for knowledge sharing and personal growth.<br></p>
+      
+      
+      <p>Join our STEM Mentorship Program today and embark on a rewarding journey of mentorship, growth, and inspiration. Together, let's shape a future where STEM thrives and transforms lives.</p>
+   </div>
 
    <div class="box-container">
-
       <div class="box offer">
-         <h3>Welcome to our STEM Mentorship Hub!</h3>
-         <p>We believe in the power of mentorship to inspire and empower the next generation of STEM leaders. Our mentorship program connects aspiring individuals with experienced professionals in science, technology, engineering, and mathematics, creating a supportive environment for knowledge sharing and personal growth.<br></p>
-        
-        
-        <p>Join our STEM Mentorship Program today and embark on a rewarding journey of mentorship, growth, and inspiration. Together, let's shape a future where STEM thrives and transforms lives.</p>
+         <h3>be a mentor</h3>
+         <p>Are you a STEM professional looking to inspire the next generation of innovators and problem solvers? We are seeking experienced mentors to join our STEM mentorship program.</p>
+         <a href="admin/register.php" class="inline-btn">apply</a>
       </div>
+
+   
 
       <?php
          $select_mentors = $conn->prepare("SELECT * FROM `mentors`");
@@ -73,7 +78,7 @@ if(isset($_COOKIE['user_id'])){
             <img src="uploaded_files/<?= $fetch_mentor['image']; ?>" alt="">
             <div>
                <h3><?= $fetch_mentor['name']; ?></h3>
-               <span><?= $fetch_mentor['field of expertise']; ?></span>
+               <span><?= $fetch_mentor['profession']; ?></span>
             </div>
          </div>
          <p>playlists : <span><?= $total_playlists; ?></span></p>
@@ -91,21 +96,10 @@ if(isset($_COOKIE['user_id'])){
             echo '<p class="empty">no mentors found!</p>';
          }
       ?>
+   </div>   
 
-   </div>
 
 </section>
-
-<!-- teachers section ends -->
-
-
-
-
-
-
-
-
-
 
 
 

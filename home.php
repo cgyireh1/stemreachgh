@@ -10,6 +10,7 @@ if(isset($_COOKIE['user_id'])){
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,11 +76,12 @@ if(isset($_COOKIE['user_id'])){
     <h1 class="heading">Course Categories</h1>
 
     <div class="box-container">
+      
 
       <div class="box">
         <div class="thumb">
             <img src="images/science.png" alt="">
-            <span>10 courses</span>
+            <span>0 courses</span>
         </div>
         <h3 class="title">Science</h3>
         <a href="science.php" class="inline-btn">view courses</a>
@@ -88,7 +90,7 @@ if(isset($_COOKIE['user_id'])){
       <div class="box">
         <div class="thumb">
             <img src="images/tech.jpg" alt="">
-            <span>10 courses</span>
+            <span>0 courses</span>
         </div>
         <h3 class="title">Technology</h3>
         <a href="tech.php" class="inline-btn">view courses</a>
@@ -97,7 +99,7 @@ if(isset($_COOKIE['user_id'])){
       <div class="box">
         <div class="thumb">
             <img src="images/engineering.png" alt="">
-            <span>10 courses</span>
+            <span>0 courses</span>
         </div>
         <h3 class="title">Engineering</h3>
         <a href="engineering.php" class="inline-btn">view courses</a>
@@ -107,7 +109,7 @@ if(isset($_COOKIE['user_id'])){
       <div class="box">
         <div class="thumb">
             <img src="images/maths.jpeg" alt="">
-            <span>10 courses</span>
+            <span>0 courses</span>
         </div>
         <h3 class="title">Mathematics</h3>
         <a href="maths.php" class="inline-btn">view courses</a>
@@ -115,11 +117,12 @@ if(isset($_COOKIE['user_id'])){
 
     </div>
 
+
   </section>
 
 
      <!-- mentorship section endss  -->
-     <section class="mentorship" id="mentorship">
+    <section class="mentorship" id="mentorship">
     <h3>Why Join Our Mentorship? </h3>
     <div class="row">
       <div class="image">
@@ -170,8 +173,8 @@ if(isset($_COOKIE['user_id'])){
         <a href="#home" >Home</a>
         <a href="#about">About</a>
         <a href="#courses">Courses</a>
-        <a href="mentors.html">Mentorships</a>
-        <a href="./dforum.html">Discussion Forum</a>
+        <a href="mentors.php">Mentorships</a>
+        <a href="dforum.php">Discussion Forum</a>
         <a href="events.php">Events</a>
         <a href="contact.php">Contact</a>
       </div>
@@ -181,8 +184,8 @@ if(isset($_COOKIE['user_id'])){
         <a href="login.php">Login</a>
         <a href="register.php">Sign Up</a>
         <a href="events.php">Women in STEM</a>
-        <a href="mentors.html">Apply As Mentor</a>
-        <a href="mentors.html">Find Mentor</a>
+        <a href="/admin/register.php">Apply As Mentor</a>
+        <a href="mentors.php">Find Mentor</a>
         <a href="events.php">Blog</a>
       </div>
 

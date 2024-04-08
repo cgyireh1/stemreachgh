@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['mentor_id'])){
-   $mentor_id = $_COOKIE['mentor_id'];
+if(isset($_COOKIE['tutor_id'])){
+   $tutor_id = $_COOKIE['tutor_id'];
 }else{
-   $mentor_id = '';
+   $tutor_id = '';
    header('location:login.php');
 }
 
@@ -151,7 +151,7 @@ if(isset($_POST['delete'])){
 
 
 
-
+<?php include '../components/footer.php'; ?>
 
 <script src="../js/admin_script.js"></script>
 

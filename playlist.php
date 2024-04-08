@@ -143,7 +143,7 @@ if(isset($_POST['save_list'])){
 
 <section class="videos-container">
 
-   <h1 class="heading">playlist videos</h1>
+   <h1 class="heading">playlist</h1>
 
    <div class="box-container">
 

@@ -55,53 +55,60 @@ if(isset($_POST['submit'])){
 
 <!-- contact section starts  -->
 
-<section class="contact">
+  <div class="container">
 
-   <div class="row">
+    <h1 class="contact-heading">We would'd love to hear from you!</h1>
 
-      <div class="image">
-         <img src="images/contact-img.svg" alt="">
+    <div class="form">
+      <div class="contact-info">
+        <h3 class="title">get in touch!</h3>
+        <div class="info">
+            <img src="images/contactus.png" class="icon" alt="contact image" />
+        </div>
+
+        <div class="social-media">
+          <p>Connect with us :</p>
+          <div class="social-icons">
+            <a href="#">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
       </div>
 
-      <form action="" method="post">
-         <h3>get in touch</h3>
-         <input type="text" placeholder="enter your name" required maxlength="100" name="name" class="box">
-         <input type="email" placeholder="enter your email" required maxlength="100" name="email" class="box">
-         <input type="number" min="0" max="9999999999" placeholder="enter your number" required maxlength="10" name="number" class="box">
-         <textarea name="msg" class="box" placeholder="enter your message" required cols="30" rows="10" maxlength="1000"></textarea>
-         <input type="submit" value="send message" class="inline-btn" name="submit">
-      </form>
-
-   </div>
-
-   <div class="box-container">
-
-      <div class="box">
-         <i class="fas fa-phone"></i>
-         <h3>phone number</h3>
-         <a href="tel:1234567890">123-456-7890</a>
-         <a href="tel:1112223333">111-222-3333</a>
+      <div class="contact-form">
+        <form action="" method="post">
+          <h3 class="title">Contact us</h3>
+          <div class="input-container">
+            <input type="text" placeholder="enter your name" required maxlength="100" name="name" class="box">
+            <label for=""></label>
+          </div>
+          <div class="input-container">
+            <input type="email" placeholder="enter your email" required maxlength="100" name="email" class="box">
+            <label for=""></label>
+          </div>
+          <div class="input-container">
+            <input type="number" min="0" max="9999999999" placeholder="enter your number" required maxlength="10" name="number" class="box">
+            <label for=""></label>
+          </div>
+          <div class="input-container textarea">
+            <textarea name="msg" class="box" placeholder="enter your message" required cols="35" rows="10" maxlength="1000"></textarea>
+            <label for=""></label>
+          </div>
+          <input type="submit" value="Submit" class="contact-btn" />
+        </form>
       </div>
-
-      <div class="box">
-         <i class="fas fa-envelope"></i>
-         <h3>email address</h3>
-         <a href="mailto:shaikhanas@gmail.com">shaikhanas@gmail.come</a>
-         <a href="mailto:anasbhai@gmail.com">anasbhai@gmail.come</a>
-      </div>
-
-      <div class="box">
-         <i class="fas fa-map-marker-alt"></i>
-         <h3>office address</h3>
-         <a href="#">flat no. 1, a-1 building, jogeshwari, mumbai, india - 400104</a>
-      </div>
-
-
-   </div>
-
-</section>
-
-<!-- contact section ends -->
+    </div>
+  </div>
 
 
 
@@ -112,10 +119,6 @@ if(isset($_POST['submit'])){
 
 
 
-
-<?php include 'components/footer.php'; ?>  
-
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>

@@ -119,8 +119,6 @@ if(isset($_POST['submit'])){
          <div class="col">
             <p>your name</p>
             <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>" maxlength="100" class="box">
-            <p>your role</p>
-            <input type="text" name="name" placeholder="<?= $fetch_profile['profession']; ?>" maxlength="100" class="box">
             <p>your email</p>
             <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" maxlength="100" class="box">
             <p>update pic</p>

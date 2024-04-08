@@ -21,7 +21,6 @@ if(isset($_COOKIE['user_id'])){
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -31,7 +30,7 @@ if(isset($_COOKIE['user_id'])){
 
 <section class="mentors">
 
-   <h1 class="heading">expert mentors</h1>
+   <h1 class="heading">Mentorship Hub</h1>
 
    <form action="" method="post" class="search-mentor">
       <input type="text" name="search_mentor" maxlength="100" placeholder="search mentor..." required>
@@ -97,7 +96,6 @@ if(isset($_COOKIE['user_id'])){
 
 </section>
 
-<!-- mentors section ends -->
 
 
 
@@ -108,9 +106,7 @@ if(isset($_COOKIE['user_id'])){
 
 
 
-<?php include 'components/footer.php'; ?>
 
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>

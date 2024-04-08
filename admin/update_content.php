@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['mentor_id'])){
-   $mentor_id = $_COOKIE['mentor_id'];
+if(isset($_COOKIE['tutor_id'])){
+   $tutor_id = $_COOKIE['tutor_id'];
 }else{
-   $mentor_id = '';
+   $tutor_id = '';
    header('location:login.php');
 }
 
@@ -134,8 +134,8 @@ if(isset($_POST['delete_video'])){
    <h1 class="heading">update content</h1>
 
    <?php
-      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND mentor_id = ?");
-      $select_videos->execute([$get_id, $mentor_id]);
+      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND tutor_id = ?");
+      $select_videos->execute([$get_id, $tutor_id]);
       if($select_videos->rowCount() > 0){
          while($fecth_videos = $select_videos->fetch(PDO::FETCH_ASSOC)){ 
             $video_id = $fecth_videos['id'];
@@ -158,8 +158,8 @@ if(isset($_POST['delete_video'])){
       <select name="playlist" class="box">
          <option value="<?= $fecth_videos['playlist_id']; ?>" selected>--select playlist</option>
          <?php
-         $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE mentor_id = ?");
-         $select_playlists->execute([$mentor_id]);
+         $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
+         $select_playlists->execute([$tutor_id]);
          if($select_playlists->rowCount() > 0){
             while($fetch_playlist = $select_playlists->fetch(PDO::FETCH_ASSOC)){
          ?>
@@ -208,7 +208,7 @@ if(isset($_POST['delete_video'])){
 
 
 
-
+<?php include '../components/footer.php'; ?>
 
 <script src="../js/admin_script.js"></script>
 

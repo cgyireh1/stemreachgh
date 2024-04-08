@@ -2,27 +2,27 @@
 
    include '../components/connect.php';
 
-   if(isset($_COOKIE['mentor_id'])){
-      $mentor_id = $_COOKIE['mentor_id'];
+   if(isset($_COOKIE['tutor_id'])){
+      $tutor_id = $_COOKIE['tutor_id'];
    }else{
-      $mentor_id = '';
+      $tutor_id = '';
       header('location:login.php');
    }
 
-   $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE mentor_id = ?");
-   $select_playlists->execute([$mentor_id]);
+   $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
+   $select_playlists->execute([$tutor_id]);
    $total_playlists = $select_playlists->rowCount();
 
-   $select_contents = $conn->prepare("SELECT * FROM `content` WHERE mentor_id = ?");
-   $select_contents->execute([$mentor_id]);
+   $select_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ?");
+   $select_contents->execute([$tutor_id]);
    $total_contents = $select_contents->rowCount();
 
-   $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE mentor_id = ?");
-   $select_likes->execute([$mentor_id]);
+   $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE tutor_id = ?");
+   $select_likes->execute([$tutor_id]);
    $total_likes = $select_likes->rowCount();
 
-   $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE mentor_id = ?");
-   $select_comments->execute([$mentor_id]);
+   $select_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ?");
+   $select_comments->execute([$tutor_id]);
    $total_comments = $select_comments->rowCount();
 
 ?>
@@ -46,12 +46,12 @@
 
 <?php include '../components/admin_header.php'; ?>
    
-<section class="mentor-profile" style="min-height: calc(100vh - 19rem);"> 
+<section class="tutor-profile" style="min-height: calc(100vh - 19rem);"> 
 
    <h1 class="heading">profile details</h1>
 
    <div class="details">
-      <div class="mentor">
+      <div class="tutor">
          <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
          <h3><?= $fetch_profile['name']; ?></h3>
          <span><?= $fetch_profile['profession']; ?></span>

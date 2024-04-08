@@ -15,23 +15,27 @@ if(isset($message)){
 
    <section class="flex">
 
-      <a href="dashboard.php" class="logo">Admin.</a>
+      <a href="dashboard.php" class="logo">Dashboard</a>
+
+      <form action="search_page.php" method="post" class="search-form">
+         <input type="text" name="search" placeholder="search here..." required maxlength="100">
+         <button type="submit" class="fas fa-search" name="search_btn"></button>
+      </form>
 
       <nav class="navbar">
-         <a href="home.php"><span>Home</span></a>
-         <a href="home.php#about"><span>About</span></a>
-         <a href="courses.php"><span>Courses</span></a>
-         <a href="mentors.php"><span>Mentorship</span></a>
-         <a href="contact.php"><span>Discussion-Forum</span></a>
-         <a href="contact.php"><span>Events</span></a>
+         <a href="dashboard.php"><span>home</span></a>
+         <a href="playlists.php"><span>playlists</span></a>
+         <a href="contents.php"><span>contents</span></a>
+         <a href="comments.php"><span>comments</span></a>
+         <a href="../components/admin_logout.php" onclick="return confirm('logout from this website?');"><i class="fas fa-right-from-bracket"></i><span>logout</span></a>
       </nav>
+
 
 
       <div class="icons">
       <div id="user-btn" class="fas fa-user"></div>
       <div id="toggle-btn" class="fas fa-toggle-off"></div>
       </div>
-
 
       <div class="profile">
          <?php

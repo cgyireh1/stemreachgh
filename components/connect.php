@@ -1,11 +1,10 @@
 <?php
-   $db_host = 'localhost';
-   $db_name = 'stemreach_db';
+
+   $db_name = 'mysql:host=localhost;dbname=stemreach_db';
    $user_name = 'root';
-   $db_role = '';
    $user_password = '';
-   
-   $conn = new PDO("mysql:host=$db_host;dbname=$db_name", $user_name, $user_password);
+
+   $conn = new PDO($db_name, $user_name, $user_password);
 
    function unique_id() {
       $str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';

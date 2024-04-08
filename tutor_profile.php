@@ -134,7 +134,8 @@ if(isset($_POST['mentor_fetch'])){
 
 
 
-  
+
+<?php include 'components/footer.php'; ?>    
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>

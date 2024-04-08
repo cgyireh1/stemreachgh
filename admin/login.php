@@ -9,12 +9,12 @@ if(isset($_POST['submit'])){
    $pass = sha1($_POST['pass']);
    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
-   $select_mentor = $conn->prepare("SELECT * FROM `mentors` WHERE email = ? AND password = ? LIMIT 1");
-   $select_mentor->execute([$email, $pass]);
-   $row = $select_mentor->fetch(PDO::FETCH_ASSOC);
+   $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE email = ? AND password = ? LIMIT 1");
+   $select_tutor->execute([$email, $pass]);
+   $row = $select_tutor->fetch(PDO::FETCH_ASSOC);
    
-   if($select_mentor->rowCount() > 0){
-     setcookie('mentor_id', $row['id'], time() + 60*60*24*30, '/');
+   if($select_tutor->rowCount() > 0){
+     setcookie('tutor_id', $row['id'], time() + 60*60*24*30, '/');
      header('location:dashboard.php');
    }else{
       $message[] = 'incorrect email or password!';
@@ -61,7 +61,7 @@ if(isset($message)){
    <form action="" method="post" enctype="multipart/form-data" class="login">
       <h3>welcome back!</h3>
       <p>your email <span>*</span></p>
-      <input type="email" name="email" placeholder="enter your email" maxlength="100" required class="box">
+      <input type="email" name="email" placeholder="enter your email" maxlength="50" required class="box">
       <p>your password <span>*</span></p>
       <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
       <p class="link">don't have an account? <a href="register.php">register new</a></p>

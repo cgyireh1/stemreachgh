@@ -2,21 +2,21 @@
 
    include '../components/connect.php';
 
-   if(isset($_COOKIE['mentor_id'])){
-      $mentor_id = $_COOKIE['mentor_id'];
+   if(isset($_COOKIE['tutor_id'])){
+      $tutor_id = $_COOKIE['tutor_id'];
    }else{
-      $mentor_id = '';
+      $tutor_id = '';
       header('location:login.php');
    }
 
 if(isset($_POST['submit'])){
 
-   $select_mentor = $conn->prepare("SELECT * FROM `mentors` WHERE id = ? LIMIT 1");
-   $select_mentor->execute([$mentor_id]);
-   $fetch_mentor = $select_mentor->fetch(PDO::FETCH_ASSOC);
+   $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ? LIMIT 1");
+   $select_tutor->execute([$tutor_id]);
+   $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
 
-   $prev_pass = $fetch_mentor['password'];
-   $prev_image = $fetch_mentor['image'];
+   $prev_pass = $fetch_tutor['password'];
+   $prev_image = $fetch_tutor['image'];
 
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
@@ -26,25 +26,25 @@ if(isset($_POST['submit'])){
    $email = filter_var($email, FILTER_SANITIZE_STRING);
 
    if(!empty($name)){
-      $update_name = $conn->prepare("UPDATE `mentors` SET name = ? WHERE id = ?");
-      $update_name->execute([$name, $mentor_id]);
+      $update_name = $conn->prepare("UPDATE `tutors` SET name = ? WHERE id = ?");
+      $update_name->execute([$name, $tutor_id]);
       $message[] = 'username updated successfully!';
    }
 
    if(!empty($profession)){
-      $update_profession = $conn->prepare("UPDATE `mentors` SET profession = ? WHERE id = ?");
-      $update_profession->execute([$profession, $mentor_id]);
+      $update_profession = $conn->prepare("UPDATE `tutors` SET profession = ? WHERE id = ?");
+      $update_profession->execute([$profession, $tutor_id]);
       $message[] = 'profession updated successfully!';
    }
 
    if(!empty($email)){
-      $select_email = $conn->prepare("SELECT email FROM `mentors` WHERE id = ? AND email = ?");
-      $select_email->execute([$mentor_id, $email]);
+      $select_email = $conn->prepare("SELECT email FROM `tutors` WHERE id = ? AND email = ?");
+      $select_email->execute([$tutor_id, $email]);
       if($select_email->rowCount() > 0){
          $message[] = 'email already taken!';
       }else{
-         $update_email = $conn->prepare("UPDATE `mentors` SET email = ? WHERE id = ?");
-         $update_email->execute([$email, $mentor_id]);
+         $update_email = $conn->prepare("UPDATE `tutors` SET email = ? WHERE id = ?");
+         $update_email->execute([$email, $tutor_id]);
          $message[] = 'email updated successfully!';
       }
    }
@@ -61,8 +61,8 @@ if(isset($_POST['submit'])){
       if($image_size > 2000000){
          $message[] = 'image size too large!';
       }else{
-         $update_image = $conn->prepare("UPDATE `mentors` SET `image` = ? WHERE id = ?");
-         $update_image->execute([$rename, $mentor_id]);
+         $update_image = $conn->prepare("UPDATE `tutors` SET `image` = ? WHERE id = ?");
+         $update_image->execute([$rename, $tutor_id]);
          move_uploaded_file($image_tmp_name, $image_folder);
          if($prev_image != '' AND $prev_image != $rename){
             unlink('../uploaded_files/'.$prev_image);
@@ -86,8 +86,8 @@ if(isset($_POST['submit'])){
          $message[] = 'confirm password not matched!';
       }else{
          if($new_pass != $empty_pass){
-            $update_pass = $conn->prepare("UPDATE `mentors` SET password = ? WHERE id = ?");
-            $update_pass->execute([$cpass, $mentor_id]);
+            $update_pass = $conn->prepare("UPDATE `tutors` SET password = ? WHERE id = ?");
+            $update_pass->execute([$cpass, $tutor_id]);
             $message[] = 'password updated successfully!';
          }else{
             $message[] = 'please enter a new password!';
@@ -173,7 +173,7 @@ if(isset($_POST['submit'])){
 
 
 
-
+<?php include '../components/footer.php'; ?>
 
 <script src="../js/admin_script.js"></script>
    

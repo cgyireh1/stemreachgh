@@ -48,12 +48,12 @@ if(isset($message)){
       </div>
 
       <nav class="navbar">
-         <a href="home.php"><span>Home</span></a>
-         <a href="home.php#about"><span>About</span></a>
-         <a href="courses.php"><span>Courses</span></a>
-         <a href="mentors.php"><span>Mentorship</span></a>
-         <a href="contact.php"><span>Discussion-Forum</span></a>
-         <a href="contact.php"><span>Contact-Us</span></a>
+         <a href="home.php">Home</a>
+         <a href="home.php#about">About</a>
+         <a href="home.php#courses">Courses</a>
+         <a href="home.php#mentorship">Mentorship</a>
+         <a href="dforum.php">Discussion-Forum</a>
+         <a href="contact.php">Contact-Us</a>
       </nav>
 
 
@@ -71,8 +71,3 @@ if(isset($message)){
 
 
    
-
-   
-
-
-<!-- side bar section ends -->

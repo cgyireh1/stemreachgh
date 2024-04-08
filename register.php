@@ -75,36 +75,29 @@ if(isset($_POST['submit'])){
 
 <?php include 'components/user_header.php'; ?>
 
-<section class="form-container">
+   <section class="form-container">
 
-   <form class="register" action="" method="post" enctype="multipart/form-data">
-      <h3>create account</h3>
-      <div class="flex">
-         <div class="col">
-
+      <form class="register" action="" method="post" enctype="multipart/form-data">
+         <h3>create account</h3>
+         <div class="input-group">
             <p>your name <span>*</span></p>
             <input type="text" name="name" placeholder="enter your name" maxlength="50" required class="box">
-
             <p>your email <span>*</span></p>
             <input type="email" name="email" placeholder="enter your email" maxlength="100" required class="box">
          </div>
-         <div class="col">
-
+         <div class="input-group">
             <p>your password <span>*</span></p>
-            <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-
+            <input type="password" name="password" placeholder="enter your password" maxlength="20" required class="box">
             <p>confirm password <span>*</span></p>
-            <input type="password" name="cpass" placeholder="confirm your password" maxlength="20" required class="box">
+            <input type="password" name="password" placeholder="confirm your password" maxlength="20" required class="box">
          </div>
-      </div>
-      <p>select pic <span>*</span></p>
-      <input type="file" name="image" accept="image/*" required class="box">
-      <p class="link">already have an account? <a href="login.php">login now</a></p>
-      <input type="submit" name="submit" value="register now" class="btn">
-   </form>
+         <p class="pic">select pic <span>*</span></p>
+         <input type="file" name="image" accept="image/*" required class="box">
+         <p class="links">Already have an account? <a href="login.php">login</a></p>
+         <input type="submit" name="submit" value="register" class="btn">
+      </form>
 
-</section>
-
+   </section>
 
 
 
@@ -116,7 +109,7 @@ if(isset($_POST['submit'])){
 
 
 
-<!-- custom js file link  -->
+
 <script src="js/script.js"></script>
    
 </body>

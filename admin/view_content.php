@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['mentor_id'])){
-   $mentor_id = $_COOKIE['mentor_id'];
+if(isset($_COOKIE['tutor_id'])){
+   $tutor_id = $_COOKIE['tutor_id'];
 }else{
-   $mentor_id = '';
+   $tutor_id = '';
    header('location:login.php');
 }
 
@@ -85,18 +85,18 @@ if(isset($_POST['delete_comment'])){
 <section class="view-content">
 
    <?php
-      $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND mentor_id = ?");
-      $select_content->execute([$get_id, $mentor_id]);
+      $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND tutor_id = ?");
+      $select_content->execute([$get_id, $tutor_id]);
       if($select_content->rowCount() > 0){
          while($fetch_content = $select_content->fetch(PDO::FETCH_ASSOC)){
             $video_id = $fetch_content['id'];
 
-            $count_likes = $conn->prepare("SELECT * FROM `likes` WHERE mentor_id = ? AND content_id = ?");
-            $count_likes->execute([$mentor_id, $video_id]);
+            $count_likes = $conn->prepare("SELECT * FROM `likes` WHERE tutor_id = ? AND content_id = ?");
+            $count_likes->execute([$tutor_id, $video_id]);
             $total_likes = $count_likes->rowCount();
 
-            $count_comments = $conn->prepare("SELECT * FROM `comments` WHERE mentor_id = ? AND content_id = ?");
-            $count_comments->execute([$mentor_id, $video_id]);
+            $count_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ? AND content_id = ?");
+            $count_comments->execute([$tutor_id, $video_id]);
             $total_comments = $count_comments->rowCount();
    ?>
    <div class="container">
