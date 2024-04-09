@@ -12,7 +12,7 @@ if(isset($_COOKIE['user_id'])){
 if(isset($_POST['delete_comment'])){
 
    $delete_id = $_POST['comment_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id =  htmlspecialchars($delete_id);
 
    $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ?");
    $verify_comment->execute([$delete_id]);
@@ -30,9 +30,9 @@ if(isset($_POST['delete_comment'])){
 if(isset($_POST['update_now'])){
 
    $update_id = $_POST['update_id'];
-   $update_id = filter_var($update_id, FILTER_SANITIZE_STRING);
+   $update_id =  htmlspecialchars($update_id);
    $update_box = $_POST['update_box'];
-   $update_box = filter_var($update_box, FILTER_SANITIZE_STRING);
+   $update_box =  htmlspecialchars($update_box);
 
    $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ? AND comment = ? ORDER BY date DESC");
    $verify_comment->execute([$update_id, $update_box]);
@@ -57,10 +57,8 @@ if(isset($_POST['update_now'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>user comments</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -71,7 +69,7 @@ if(isset($_POST['update_now'])){
 <?php
    if(isset($_POST['edit_comment'])){
       $edit_id = $_POST['comment_id'];
-      $edit_id = filter_var($edit_id, FILTER_SANITIZE_STRING);
+      $edit_id =  htmlspecialchars($edit_id);
       $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ? LIMIT 1");
       $verify_comment->execute([$edit_id]);
       if($verify_comment->rowCount() > 0){
@@ -135,7 +133,6 @@ if(isset($_POST['update_now'])){
    
 </section>
 
-<!-- comments section ends -->
 
 
 
@@ -146,9 +143,8 @@ if(isset($_POST['update_now'])){
 
 
 
-<?php include 'components/footer.php'; ?>
 
-<!-- custom js file link  -->
+
 <script src="js/script.js"></script>
    
 </body>

@@ -13,7 +13,7 @@ if(isset($_POST['remove'])){
 
    if($user_id != ''){
       $content_id = $_POST['content_id'];
-      $content_id = filter_var($content_id, FILTER_SANITIZE_STRING);
+      $content_id =  htmlspecialchars($content_id);
 
       $verify_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ? AND content_id = ?");
       $verify_likes->execute([$user_id, $content_id]);
@@ -39,10 +39,8 @@ if(isset($_POST['remove'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>liked videos</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -50,7 +48,6 @@ if(isset($_POST['remove'])){
 
 <?php include 'components/user_header.php'; ?>
 
-<!-- courses section starts  -->
 
 <section class="liked-videos">
 
@@ -114,9 +111,7 @@ if(isset($_POST['remove'])){
 
 
 
-<?php include 'components/footer.php'; ?>
 
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>

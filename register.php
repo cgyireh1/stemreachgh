@@ -12,16 +12,16 @@ if(isset($_POST['submit'])){
 
    $id = unique_id();
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name =  htmlspecialchars($name);
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $email =  htmlspecialchars($email);
    $pass = sha1($_POST['pass']);
-   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+   $pass =  htmlspecialchars($pass);
    $cpass = sha1($_POST['cpass']);
-   $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
+   $cpass =  htmlspecialchars($cpass);
 
    $image = $_FILES['image']['name'];
-   $image = filter_var($image, FILTER_SANITIZE_STRING);
+   $image =  htmlspecialchars($image);
    $ext = pathinfo($image, PATHINFO_EXTENSION);
    $rename = unique_id().'.'.$ext;
    $image_size = $_FILES['image']['size'];
@@ -64,10 +64,8 @@ if(isset($_POST['submit'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>home</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>

@@ -28,6 +28,65 @@ if(isset($_COOKIE['user_id'])){
 
 <?php include 'components/user_header.php'; ?>
 
+  <section class="box-container">
+
+    <div class="discussion-forum" id ="discussion-forum">
+      <div class="top-bar">
+        <h1>
+          Discussion Forum
+        </h1>
+      </div>
+    
+      <div class="main">
+        <div class="head">
+          <h4 class="title">
+            Thread 1
+          </h4>
+          <div class="bottom">
+            <p class="timestand">
+              14/03/2024
+            </p>
+            <p class="comment-count">
+              5 comments
+            </p>
+          </div>
+        </div>  
+        <textarea name="message" placeholder="Enter your comment"> </textarea>
+        <button>Add comment</button>
+      
+        <div class="comments">
+          <div class="comment">
+            <div class="top-comment">
+              <p class="user">
+                User1
+              </p>        
+              <p class="comment-ts">
+                14/03/2024
+              </p>
+            </div>
+            <div class="comment-content">
+              Comment text here
+            </div>
+          </div>
+    
+          <div class="comment">
+            <div class="top-comment">
+              <p class="user">
+                User2
+              </p>        
+              <p class="comment-ts">
+                27/03/2024
+              </p>
+            </div>
+            <div class="comment-content">
+              Comment text here
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </section>
+
 
 
 

@@ -6,7 +6,7 @@ if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
 }else{
    $user_id = '';
-   header('location:login.php');
+   header('location: login.php');
 }
 
 $select_likes = $conn->prepare("SELECT * FROM `likes` WHERE user_id = ?");
@@ -45,12 +45,11 @@ $total_bookmarked = $select_bookmark->rowCount();
    <h1 class="heading">profile details</h1>
 
    <div class="details">
-
       <div class="user">
-         <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="profile-image">
+         <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="profile-img">
          <h3><?= $fetch_profile['name']; ?></h3>
-         <p>student</p>
-         <a href="update.php" class="inline-btn">update profile</a>
+         <span><?= $fetch_profile['profession']; ?></span>
+         <a href="update.php" class="inline-btn-profile">update profile</a>
       </div>
 
       <div class="box-container">
@@ -94,7 +93,6 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 </section>
 
-<!-- profile section ends -->
 
 
 
@@ -107,17 +105,7 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 
 
-<!-- footer section starts  -->
 
-<footer class="footer">
-
-   &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!
-
-</footer>
-
-<!-- footer section ends -->
-
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>

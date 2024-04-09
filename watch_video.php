@@ -20,7 +20,7 @@ if(isset($_POST['like_content'])){
    if($user_id != ''){
 
       $content_id = $_POST['content_id'];
-      $content_id = filter_var($content_id, FILTER_SANITIZE_STRING);
+      $content_id =  htmlspecialchars($content_id);
 
       $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
       $select_content->execute([$content_id]);
@@ -53,9 +53,9 @@ if(isset($_POST['add_comment'])){
 
       $id = unique_id();
       $comment_box = $_POST['comment_box'];
-      $comment_box = filter_var($comment_box, FILTER_SANITIZE_STRING);
+      $comment_box =  htmlspecialchars($comment_box);
       $content_id = $_POST['content_id'];
-      $content_id = filter_var($content_id, FILTER_SANITIZE_STRING);
+      $content_id =  htmlspecialchars($content_id);
 
       $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
       $select_content->execute([$content_id]);
@@ -89,7 +89,7 @@ if(isset($_POST['add_comment'])){
 if(isset($_POST['delete_comment'])){
 
    $delete_id = $_POST['comment_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id =  htmlspecialchars($delete_id);
 
    $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ?");
    $verify_comment->execute([$delete_id]);
@@ -107,9 +107,9 @@ if(isset($_POST['delete_comment'])){
 if(isset($_POST['update_now'])){
 
    $update_id = $_POST['update_id'];
-   $update_id = filter_var($update_id, FILTER_SANITIZE_STRING);
+   $update_id =  htmlspecialchars($update_id);
    $update_box = $_POST['update_box'];
-   $update_box = filter_var($update_box, FILTER_SANITIZE_STRING);
+   $update_box =  htmlspecialchars($update_box);
 
    $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ? AND comment = ?");
    $verify_comment->execute([$update_id, $update_box]);
@@ -134,10 +134,7 @@ if(isset($_POST['update_now'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>watch video</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -148,20 +145,21 @@ if(isset($_POST['update_now'])){
 <?php
    if(isset($_POST['edit_comment'])){
       $edit_id = $_POST['comment_id'];
-      $edit_id = filter_var($edit_id, FILTER_SANITIZE_STRING);
+      $edit_id =  htmlspecialchars($edit_id);
       $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ? LIMIT 1");
       $verify_comment->execute([$edit_id]);
       if($verify_comment->rowCount() > 0){
          $fetch_edit_comment = $verify_comment->fetch(PDO::FETCH_ASSOC);
 ?>
 <section class="edit-comment">
-   <h1 class="heading">edti comment</h1>
+   
    <form action="" method="post">
+      <!-- <h1 class="heading">Edit comment</h1> -->
       <input type="hidden" name="update_id" value="<?= $fetch_edit_comment['id']; ?>">
       <textarea name="update_box" class="box" maxlength="1000" required placeholder="please enter your comment" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
       <div class="flex">
-         <a href="watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">cancel edit</a>
-         <input type="submit" value="update now" name="update_now" class="inline-btn">
+         <a href="watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">cancel</a>
+         <input type="submit" value="update" name="update_now" class="inline-btn">
       </div>
    </form>
 </section>
@@ -172,7 +170,6 @@ if(isset($_POST['update_now'])){
 }
 ?>
 
-<!-- watch video section starts  -->
 
 <section class="watch-video">
 
@@ -234,21 +231,18 @@ if(isset($_POST['update_now'])){
 
 </section>
 
-<!-- watch video section ends -->
 
-<!-- comments section starts  -->
 
 <section class="comments">
 
-   <h1 class="heading">add a comment</h1>
-
    <form action="" method="post" class="add-comment">
+      <h3 class="heading">Add comment</h3>
       <input type="hidden" name="content_id" value="<?= $get_id; ?>">
       <textarea name="comment_box" required placeholder="write your comment..." maxlength="1000" cols="30" rows="10"></textarea>
       <input type="submit" value="add comment" name="add_comment" class="inline-btn">
    </form>
 
-   <h1 class="heading">user comments</h1>
+   <h1 class="heading">Comments</h1>
 
    
    <div class="show-comments">
@@ -275,8 +269,8 @@ if(isset($_POST['update_now'])){
          ?>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
-            <button type="submit" name="edit_comment" class="inline-option-btn">edit comment</button>
-            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">delete comment</button>
+            <button type="submit" name="edit_comment" class="inline-option-btn">edit</button>
+            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">delete</button>
          </form>
          <?php
          }
@@ -292,18 +286,12 @@ if(isset($_POST['update_now'])){
    
 </section>
 
-<!-- comments section ends -->
 
 
 
 
 
 
-
-
-<?php include 'components/footer.php'; ?>
-
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>

@@ -2,16 +2,16 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
+if(isset($_COOKIE['mentor_id'])){
+   $mentor_id = $_COOKIE['mentor_id'];
 }else{
-   $tutor_id = '';
+   $mentor_id = '';
    header('location:login.php');
 }
 
 if(isset($_POST['delete_video'])){
    $delete_id = $_POST['video_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id = htmlspecialchars($delete_id);
    $verify_video = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
    $verify_video->execute([$delete_id]);
    if($verify_video->rowCount() > 0){
@@ -45,11 +45,8 @@ if(isset($_POST['delete_video'])){
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Dashboard</title>
-
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
@@ -65,12 +62,12 @@ if(isset($_POST['delete_video'])){
 
    <div class="box" style="text-align: center;">
       <h3 class="title" style="margin-bottom: .5rem;">create new content</h3>
-      <a href="add_content.php" class="btn">add content</a>
+      <a href="add_content.php" class="view-btn">add content</a>
    </div>
 
    <?php
-      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ? ORDER BY date DESC");
-      $select_videos->execute([$tutor_id]);
+      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE mentor_id = ? ORDER BY date DESC");
+      $select_videos->execute([$mentor_id]);
       if($select_videos->rowCount() > 0){
          while($fecth_videos = $select_videos->fetch(PDO::FETCH_ASSOC)){ 
             $video_id = $fecth_videos['id'];
@@ -87,7 +84,7 @@ if(isset($_POST['delete_video'])){
             <a href="update_content.php?get_id=<?= $video_id; ?>" class="option-btn">update</a>
             <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this video?');" name="delete_video">
          </form>
-         <a href="view_content.php?get_id=<?= $video_id; ?>" class="btn">view content</a>
+         <a href="view_content.php?get_id=<?= $video_id; ?>" class="view-btn">view content</a>
       </div>
    <?php
          }
@@ -114,7 +111,6 @@ if(isset($_POST['delete_video'])){
 
 
 
-<?php include '../components/footer.php'; ?>
 
 <script src="../js/admin_script.js"></script>
 

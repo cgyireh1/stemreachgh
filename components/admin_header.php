@@ -1,9 +1,9 @@
 <?php
 if(isset($message)){
-   foreach($message as $message){
+   foreach($message as $msg){
       echo '
       <div class="message">
-         <span>'.$message.'</span>
+         <span>'.$msg.'</span>
          <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
       </div>
       ';
@@ -23,18 +23,17 @@ if(isset($message)){
       </form>
 
       <nav class="navbar">
-         <a href="dashboard.php"><span>home</span></a>
-         <a href="playlists.php"><span>playlists</span></a>
-         <a href="contents.php"><span>contents</span></a>
-         <a href="comments.php"><span>comments</span></a>
+         <a href="dashboard.php"><span>Home</span></a>
+         <a href="playlists.php"><span>Playlists</span></a>
+         <a href="contents.php"><span>Contents</span></a>
+         <a href="comments.php"><span>Comments</span></a>
          <a href="../components/admin_logout.php" onclick="return confirm('logout from this website?');"><i class="fas fa-right-from-bracket"></i><span>logout</span></a>
       </nav>
 
 
 
       <div class="icons">
-      <div id="user-btn" class="fas fa-user"></div>
-      <div id="toggle-btn" class="fas fa-toggle-off"></div>
+         <div id="user-btn" class="fas fa-user"></div>
       </div>
 
       <div class="profile">
@@ -47,7 +46,7 @@ if(isset($message)){
          <img src="../uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
          <h3><?= $fetch_profile['name']; ?></h3>
          <span><?= $fetch_profile['profession']; ?></span>
-         <a href="profile.php" class="btn">view profile</a>
+         <a href="profile.php" class="view-btn">view profile</a>
          <div class="flex-btn">
             <a href="login.php" class="option-btn">login</a>
             <a href="register.php" class="option-btn">register</a>
@@ -57,7 +56,7 @@ if(isset($message)){
             }else{
          ?>
          <h3>please login or register</h3>
-          <div class="flex-btn">
+         <div class="flex-btn">
             <a href="login.php" class="option-btn">login</a>
             <a href="register.php" class="option-btn">register</a>
          </div>

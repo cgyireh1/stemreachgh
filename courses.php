@@ -7,7 +7,6 @@ if(isset($_COOKIE['user_id'])){
 }else{
    $user_id = '';
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +16,7 @@ if(isset($_COOKIE['user_id'])){
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>courses</title>
+
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
    <link rel="stylesheet" href="css/style.css">
@@ -26,7 +26,6 @@ if(isset($_COOKIE['user_id'])){
 
 <?php include 'components/user_header.php'; ?>
 
-<!-- courses section starts  -->
 
 <section class="courses">
 
@@ -45,12 +44,12 @@ if(isset($_COOKIE['user_id'])){
                $select_mentor->execute([$fetch_course['mentor_id']]);
                $fetch_mentor = $select_mentor->fetch(PDO::FETCH_ASSOC);
       ?>
+
       <div class="box">
          <div class="mentor">
-            <img src="uploaded_files/<?= $fetch_mentor['image']; ?>" alt="">
+            <span><i class="fas fa-circle-dot"></i> <?= $fetch_course['status']; ?></span>
             <div>
-               <h3><?= $fetch_mentor['name']; ?></h3>
-               <span><?= $fetch_course['date']; ?></span>
+              <span><?= $fetch_course['date']; ?></span>
             </div>
          </div>
          <img src="uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">

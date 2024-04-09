@@ -1,3 +1,4 @@
+
 <?php
 
 include 'components/connect.php';
@@ -20,7 +21,7 @@ if(isset($_POST['save_list'])){
    if($user_id != ''){
       
       $list_id = $_POST['list_id'];
-      $list_id = filter_var($list_id, FILTER_SANITIZE_STRING);
+      $list_id =  htmlspecialchars($list_id);
 
       $select_list = $conn->prepare("SELECT * FROM `bookmark` WHERE user_id = ? AND playlist_id = ?");
       $select_list->execute([$user_id, $list_id]);
@@ -51,10 +52,8 @@ if(isset($_POST['save_list'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>playlist</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -62,7 +61,7 @@ if(isset($_POST['save_list'])){
 
 <?php include 'components/user_header.php'; ?>
 
-<!-- playlist section starts  -->
+
 
 <section class="playlist">
 
@@ -101,24 +100,19 @@ if(isset($_POST['save_list'])){
             <?php
                }else{
             ?>
-               <button type="submit" name="save_list"><i class="far fa-bookmark"></i><span>save playlist</span></button>
+               <button type="submit" name="save_list"><i class="far fa-bookmark"></i><span>save</span></button>
             <?php
                }
             ?>
          </form>
          <div class="thumb">
-            <span><?= $total_videos; ?> videos</span>
+            <span><?= $total_videos; ?> video(s)</span>
             <img src="uploaded_files/<?= $fetch_playlist['thumb']; ?>" alt="">
          </div>
       </div>
 
       <div class="col">
          <div class="mentor">
-            <img src="uploaded_files/<?= $fetch_mentor['image']; ?>" alt="">
-            <div>
-               <h3><?= $fetch_mentor['name']; ?></h3>
-               <span><?= $fetch_mentor['profession']; ?></span>
-            </div>
          </div>
          <div class="details">
             <h3><?= $fetch_playlist['title']; ?></h3>
@@ -137,9 +131,6 @@ if(isset($_POST['save_list'])){
 
 </section>
 
-<!-- playlist section ends -->
-
-<!-- videos container section starts  -->
 
 <section class="videos-container">
 
@@ -169,7 +160,6 @@ if(isset($_POST['save_list'])){
 
 </section>
 
-<!-- videos container section ends -->
 
 
 
@@ -181,9 +171,6 @@ if(isset($_POST['save_list'])){
 
 
 
-<?php include 'components/footer.php'; ?>
-
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
    
 </body>

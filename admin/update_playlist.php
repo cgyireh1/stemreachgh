@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
+if(isset($_COOKIE['mentor_id'])){
+   $mentor_id = $_COOKIE['mentor_id'];
 }else{
-   $tutor_id = '';
+   $mentor_id = '';
    header('location:login.php');
 }
 
@@ -19,19 +19,19 @@ if(isset($_GET['get_id'])){
 if(isset($_POST['submit'])){
 
    $title = $_POST['title'];
-   $title = filter_var($title, FILTER_SANITIZE_STRING);
+   $title = htmlspecialchars($title);
    $description = $_POST['description'];
-   $description = filter_var($description, FILTER_SANITIZE_STRING);
+   $description = htmlspecialchars($description);
    $status = $_POST['status'];
-   $status = filter_var($status, FILTER_SANITIZE_STRING);
+   $status = htmlspecialchars($status);
 
    $update_playlist = $conn->prepare("UPDATE `playlist` SET title = ?, description = ?, status = ? WHERE id = ?");
    $update_playlist->execute([$title, $description, $status, $get_id]);
 
    $old_image = $_POST['old_image'];
-   $old_image = filter_var($old_image, FILTER_SANITIZE_STRING);
+   $old_image = htmlspecialchars($old_image);
    $image = $_FILES['image']['name'];
-   $image = filter_var($image, FILTER_SANITIZE_STRING);
+   $image = htmlspecialchars($image);
    $ext = pathinfo($image, PATHINFO_EXTENSION);
    $rename = unique_id().'.'.$ext;
    $image_size = $_FILES['image']['size'];
@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
 
 if(isset($_POST['delete'])){
    $delete_id = $_POST['playlist_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id = htmlspecialchars($delete_id);
    $delete_playlist_thumb = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? LIMIT 1");
    $delete_playlist_thumb->execute([$delete_id]);
    $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
@@ -79,10 +79,8 @@ if(isset($_POST['delete'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Update Playlist</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
@@ -124,7 +122,7 @@ if(isset($_POST['delete'])){
       <input type="file" name="image" accept="image/*" class="box">
       <input type="submit" value="update playlist" name="submit" class="btn">
       <div class="flex-btn">
-         <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this playlist?');" name="delete">
+         <input type="submit" value="delete" class="option-btn" onclick="return confirm('delete this playlist?');" name="delete">
          <a href="view_playlist.php?get_id=<?= $playlist_id; ?>" class="option-btn">view playlist</a>
       </div>
    </form>

@@ -77,42 +77,43 @@ if(isset($_COOKIE['user_id'])){
 
     <div class="box-container">
       
+    
 
       <div class="box">
         <div class="thumb">
             <img src="images/science.png" alt="">
-            <span>0 courses</span>
+            <span>S-courses</span>
         </div>
         <h3 class="title">Science</h3>
-        <a href="science.php" class="inline-btn">view courses</a>
+        <a href="courses.php" class="inline-btn">view courses</a>
       </div>
 
       <div class="box">
         <div class="thumb">
             <img src="images/tech.jpg" alt="">
-            <span>0 courses</span>
+            <span>T-courses</span>
         </div>
         <h3 class="title">Technology</h3>
-        <a href="tech.php" class="inline-btn">view courses</a>
+        <a href="courses.php" class="inline-btn">view courses</a>
       </div>
 
       <div class="box">
         <div class="thumb">
             <img src="images/engineering.png" alt="">
-            <span>0 courses</span>
+            <span>E-courses</span>
         </div>
         <h3 class="title">Engineering</h3>
-        <a href="engineering.php" class="inline-btn">view courses</a>
+        <a href="courses.php" class="inline-btn">view courses</a>
       </div>
 
 
       <div class="box">
         <div class="thumb">
             <img src="images/maths.jpeg" alt="">
-            <span>0 courses</span>
+            <span>M-courses</span>
         </div>
         <h3 class="title">Mathematics</h3>
-        <a href="maths.php" class="inline-btn">view courses</a>
+        <a href="courses.php" class="inline-btn">view courses</a>
       </div>
 
     </div>
@@ -184,7 +185,7 @@ if(isset($_COOKIE['user_id'])){
         <a href="login.php">Login</a>
         <a href="register.php">Sign Up</a>
         <a href="events.php">Women in STEM</a>
-        <a href="/admin/register.php">Apply As Mentor</a>
+        <a href="admin/register.php">Apply As Mentor</a>
         <a href="mentors.php">Find Mentor</a>
         <a href="events.php">Blog</a>
       </div>

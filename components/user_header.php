@@ -1,10 +1,10 @@
 <?php
 
 if(isset($message)){
-   foreach($message as $message){
+   foreach($message as $msg){
       echo '
       <div class="message">
-         <span>'.$message.'</span>
+         <span>'.$msg.'</span>
          <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
       </div>
       ';
@@ -28,19 +28,19 @@ if(isset($message)){
          <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="profile-image">
          <h3><?= $fetch_profile['name']; ?></h3>
          <span><?= $fetch_profile['profession']; ?></span>
-         <a href="profile.php" class="btn">view profile</a>
-         <div class="flex-btn">
-            <a href="login.php" class="option-btn">login</a>
-            <a href="register.php" class="option-btn">register</a>
+         <a href="profile.php" class="btn-profile">your profile</a>
+         <div class="flex-btn-profile">
+            <a href="login.php" class="option-btn-profile">login</a>
+            <a href="register.php" class="option-btn-profile">register</a>
          </div>
-         <a href="components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
+         <a href="components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn-profile">logout</a>
          <?php
             }else{
          ?>
-         <h3>please login or register</h3>
-          <div class="flex-btn">
-            <a href="login.php" class="option-btn">login</a>
-            <a href="register.php" class="option-btn">register</a>
+         <h3>login or register</h3>
+          <div class="flex-btn-profile">
+            <a href="login.php" class="option-btn-profile">login</a>
+            <a href="register.php" class="option-btn-profile">register</a>
          </div>
          <?php
             }

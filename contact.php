@@ -11,13 +11,13 @@ if(isset($_COOKIE['user_id'])){
 if(isset($_POST['submit'])){
 
    $name = $_POST['name']; 
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name =  htmlspecialchars($name);
    $email = $_POST['email']; 
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $email =  htmlspecialchars($email);
    $number = $_POST['number']; 
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
+   $number =  htmlspecialchars($number);
    $msg = $_POST['msg']; 
-   $msg = filter_var($msg, FILTER_SANITIZE_STRING);
+   $msg =  htmlspecialchars($msg);
 
    $select_contact = $conn->prepare("SELECT * FROM `contact` WHERE name = ? AND email = ? AND number = ? AND message = ?");
    $select_contact->execute([$name, $email, $number, $msg]);
@@ -42,18 +42,15 @@ if(isset($_POST['submit'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>contact</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
 
 <?php include 'components/user_header.php'; ?>
-
-<!-- contact section starts  -->
+<section>
 
   <div class="container">
 
@@ -61,7 +58,7 @@ if(isset($_POST['submit'])){
 
     <div class="form">
       <div class="contact-info">
-        <h3 class="title">get in touch!</h3>
+        <h3 class="title">Get in touch!</h3>
         <div class="info">
             <img src="images/contactus.png" class="icon" alt="contact image" />
         </div>
@@ -89,19 +86,19 @@ if(isset($_POST['submit'])){
         <form action="" method="post">
           <h3 class="title">Contact us</h3>
           <div class="input-container">
-            <input type="text" placeholder="enter your name" required maxlength="100" name="name" class="box">
+            <input type="text" placeholder="Enter your name" required maxlength="100" name="name" class="box">
             <label for=""></label>
           </div>
           <div class="input-container">
-            <input type="email" placeholder="enter your email" required maxlength="100" name="email" class="box">
+            <input type="email" placeholder="Enter your email" required maxlength="100" name="email" class="box">
             <label for=""></label>
           </div>
           <div class="input-container">
-            <input type="number" min="0" max="9999999999" placeholder="enter your number" required maxlength="10" name="number" class="box">
+            <input type="number" min="0" max="9999999999" placeholder="Enter your number" required maxlength="10" name="number" class="box">
             <label for=""></label>
           </div>
           <div class="input-container textarea">
-            <textarea name="msg" class="box" placeholder="enter your message" required cols="35" rows="10" maxlength="1000"></textarea>
+            <textarea name="msg" class="box" placeholder="Enter your message" required cols="35" rows="10" maxlength="1000"></textarea>
             <label for=""></label>
           </div>
           <input type="submit" value="Submit" class="contact-btn" />
@@ -109,6 +106,10 @@ if(isset($_POST['submit'])){
       </div>
     </div>
   </div>
+
+</section>
+
+  
 
 
 

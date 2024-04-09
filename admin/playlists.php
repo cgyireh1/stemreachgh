@@ -2,19 +2,19 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
+if(isset($_COOKIE['mentor_id'])){
+   $mentor_id = $_COOKIE['mentor_id'];
 }else{
-   $tutor_id = '';
+   $mentor_id = '';
    header('location:login.php');
 }
 
 if(isset($_POST['delete'])){
    $delete_id = $_POST['playlist_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id = htmlspecialchars($delete_id);
 
-   $verify_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND tutor_id = ? LIMIT 1");
-   $verify_playlist->execute([$delete_id, $tutor_id]);
+   $verify_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND mentor_id = ? LIMIT 1");
+   $verify_playlist->execute([$delete_id, $mentor_id]);
 
    if($verify_playlist->rowCount() > 0){
 
@@ -44,10 +44,8 @@ if(isset($_POST['delete'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Playlists</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
@@ -63,12 +61,12 @@ if(isset($_POST['delete'])){
    
       <div class="box" style="text-align: center;">
          <h3 class="title" style="margin-bottom: .5rem;">create new playlist</h3>
-         <a href="add_playlist.php" class="btn">add playlist</a>
+         <a href="add_playlist.php" class="view-btn">add playlist</a>
       </div>
 
       <?php
-         $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ? ORDER BY date DESC");
-         $select_playlist->execute([$tutor_id]);
+         $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE mentor_id = ? ORDER BY date DESC");
+         $select_playlist->execute([$mentor_id]);
          if($select_playlist->rowCount() > 0){
          while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
             $playlist_id = $fetch_playlist['id'];
@@ -92,7 +90,7 @@ if(isset($_POST['delete'])){
             <a href="update_playlist.php?get_id=<?= $playlist_id; ?>" class="option-btn">update</a>
             <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this playlist?');" name="delete">
          </form>
-         <a href="view_playlist.php?get_id=<?= $playlist_id; ?>" class="btn">view playlist</a>
+         <a href="view_playlist.php?get_id=<?= $playlist_id; ?>" class="view-btn">view playlist</a>
       </div>
       <?php
          } 

@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
+if(isset($_COOKIE['mentor_id'])){
+   $mentor_id = $_COOKIE['mentor_id'];
 }else{
-   $tutor_id = '';
+   $mentor_id = '';
    header('location:login.php');
 }
 
@@ -19,7 +19,7 @@ if(isset($_GET['get_id'])){
 if(isset($_POST['delete_video'])){
 
    $delete_id = $_POST['video_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id = htmlspecialchars($delete_id);
 
    $delete_video_thumb = $conn->prepare("SELECT thumb FROM `content` WHERE id = ? LIMIT 1");
    $delete_video_thumb->execute([$delete_id]);
@@ -45,7 +45,7 @@ if(isset($_POST['delete_video'])){
 if(isset($_POST['delete_comment'])){
 
    $delete_id = $_POST['comment_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id = htmlspecialchars($delete_id);
 
    $verify_comment = $conn->prepare("SELECT * FROM `comments` WHERE id = ?");
    $verify_comment->execute([$delete_id]);
@@ -69,11 +69,8 @@ if(isset($_POST['delete_comment'])){
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>view content</title>
-
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
@@ -85,18 +82,18 @@ if(isset($_POST['delete_comment'])){
 <section class="view-content">
 
    <?php
-      $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND tutor_id = ?");
-      $select_content->execute([$get_id, $tutor_id]);
+      $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND mentor_id = ?");
+      $select_content->execute([$get_id, $mentor_id]);
       if($select_content->rowCount() > 0){
          while($fetch_content = $select_content->fetch(PDO::FETCH_ASSOC)){
             $video_id = $fetch_content['id'];
 
-            $count_likes = $conn->prepare("SELECT * FROM `likes` WHERE tutor_id = ? AND content_id = ?");
-            $count_likes->execute([$tutor_id, $video_id]);
+            $count_likes = $conn->prepare("SELECT * FROM `likes` WHERE mentor_id = ? AND content_id = ?");
+            $count_likes->execute([$mentor_id, $video_id]);
             $total_likes = $count_likes->rowCount();
 
-            $count_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ? AND content_id = ?");
-            $count_comments->execute([$tutor_id, $video_id]);
+            $count_comments = $conn->prepare("SELECT * FROM `comments` WHERE mentor_id = ? AND content_id = ?");
+            $count_comments->execute([$mentor_id, $video_id]);
             $total_comments = $count_comments->rowCount();
    ?>
    <div class="container">
@@ -112,7 +109,7 @@ if(isset($_POST['delete_comment'])){
          <div class="flex-btn">
             <input type="hidden" name="video_id" value="<?= $video_id; ?>">
             <a href="update_content.php?get_id=<?= $video_id; ?>" class="option-btn">update</a>
-            <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this video?');" name="delete_video">
+            <input type="submit" value="delete" class="option-btn" onclick="return confirm('delete this video?');" name="delete_video">
          </div>
       </form>
    </div>

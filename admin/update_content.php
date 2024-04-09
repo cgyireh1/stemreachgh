@@ -2,10 +2,10 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
+if(isset($_COOKIE['mentor_id'])){
+   $mentor_id = $_COOKIE['mentor_id'];
 }else{
-   $tutor_id = '';
+   $mentor_id = '';
    header('location:login.php');
 }
 
@@ -19,15 +19,15 @@ if(isset($_GET['get_id'])){
 if(isset($_POST['update'])){
 
    $video_id = $_POST['video_id'];
-   $video_id = filter_var($video_id, FILTER_SANITIZE_STRING);
+   $video_id = htmlspecialchars($video_id);
    $status = $_POST['status'];
-   $status = filter_var($status, FILTER_SANITIZE_STRING);
+   $status = htmlspecialchars($status);
    $title = $_POST['title'];
-   $title = filter_var($title, FILTER_SANITIZE_STRING);
+   $title = htmlspecialchars($title);
    $description = $_POST['description'];
-   $description = filter_var($description, FILTER_SANITIZE_STRING);
+   $description = htmlspecialchars($description);
    $playlist = $_POST['playlist'];
-   $playlist = filter_var($playlist, FILTER_SANITIZE_STRING);
+   $playlist = htmlspecialchars($playlist);
 
    $update_content = $conn->prepare("UPDATE `content` SET title = ?, description = ?, status = ? WHERE id = ?");
    $update_content->execute([$title, $description, $status, $video_id]);
@@ -38,9 +38,9 @@ if(isset($_POST['update'])){
    }
 
    $old_thumb = $_POST['old_thumb'];
-   $old_thumb = filter_var($old_thumb, FILTER_SANITIZE_STRING);
+   $old_thumb = htmlspecialchars($old_thumb);
    $thumb = $_FILES['thumb']['name'];
-   $thumb = filter_var($thumb, FILTER_SANITIZE_STRING);
+   $thumb = htmlspecialchars($thumb);
    $thumb_ext = pathinfo($thumb, PATHINFO_EXTENSION);
    $rename_thumb = unique_id().'.'.$thumb_ext;
    $thumb_size = $_FILES['thumb']['size'];
@@ -61,9 +61,9 @@ if(isset($_POST['update'])){
    }
 
    $old_video = $_POST['old_video'];
-   $old_video = filter_var($old_video, FILTER_SANITIZE_STRING);
+   $old_video = htmlspecialchars($old_video);
    $video = $_FILES['video']['name'];
-   $video = filter_var($video, FILTER_SANITIZE_STRING);
+   $video = htmlspecialchars($video);
    $video_ext = pathinfo($video, PATHINFO_EXTENSION);
    $rename_video = unique_id().'.'.$video_ext;
    $video_tmp_name = $_FILES['video']['tmp_name'];
@@ -85,7 +85,7 @@ if(isset($_POST['update'])){
 if(isset($_POST['delete_video'])){
 
    $delete_id = $_POST['video_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id = htmlspecialchars($delete_id);
 
    $delete_video_thumb = $conn->prepare("SELECT thumb FROM `content` WHERE id = ? LIMIT 1");
    $delete_video_thumb->execute([$delete_id]);
@@ -118,10 +118,8 @@ if(isset($_POST['delete_video'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Update video</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
@@ -134,8 +132,8 @@ if(isset($_POST['delete_video'])){
    <h1 class="heading">update content</h1>
 
    <?php
-      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND tutor_id = ?");
-      $select_videos->execute([$get_id, $tutor_id]);
+      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND mentor_id = ?");
+      $select_videos->execute([$get_id, $mentor_id]);
       if($select_videos->rowCount() > 0){
          while($fecth_videos = $select_videos->fetch(PDO::FETCH_ASSOC)){ 
             $video_id = $fecth_videos['id'];
@@ -158,8 +156,8 @@ if(isset($_POST['delete_video'])){
       <select name="playlist" class="box">
          <option value="<?= $fecth_videos['playlist_id']; ?>" selected>--select playlist</option>
          <?php
-         $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
-         $select_playlists->execute([$tutor_id]);
+         $select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE mentor_id = ?");
+         $select_playlists->execute([$mentor_id]);
          if($select_playlists->rowCount() > 0){
             while($fetch_playlist = $select_playlists->fetch(PDO::FETCH_ASSOC)){
          ?>

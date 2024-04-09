@@ -66,6 +66,7 @@ section{
 }
 
 .btn,
+.view-btn,
 .option-btn,
 .delete-btn,
 .inline-btn,
@@ -74,14 +75,13 @@ section{
    border-radius: .5rem;
    padding: 1rem 3rem;
    font-size: 1.8rem;
-   color: #fff;
+   color: var(--white);
    margin-top: 1rem;
    text-transform: capitalize;
    cursor: pointer;
    text-align: center;
 }
-
-.btn,
+.view-btn,
 .option-btn,
 .delete-btn{
    display: block;
@@ -95,28 +95,37 @@ section{
 }
 
 .btn,
+.view-btn,
 .inline-btn{
    background-color: var(--main-color);
+   width: 70%;
+   margin-left: 5rem;
 }
 
 .option-btn,
 .inline-option-btn{
-   background-color: var(--oragen);
+   background-color: rgb(201, 90, 109);
 }
 
 .delete-btn,
 .inline-delete-btn{
-   background-color: var(--red);
+   background-color: rgb(201, 90, 109);
 }
 
 .btn:hover,
-.option-btn:hover,
-.delete-btn:hover,
+.view-btn:hover,
 .inline-btn:hover,
 .inline-option-btn:hover,
 .inline-delete-btn:hover{
-   background-color: var(--black);
+   background-color:chocolate;
    color: var(--white);
+}
+
+.option-btn:hover,
+.delete-btn:hover{
+   display: block;
+   width: 100%;
+   background-color:var(--main-color);
 }
 
 .flex-btn{
@@ -179,33 +188,54 @@ section{
 }
 
 .header{
-   background-color: rgb(233, 231, 231);
+   background-color: pink;
    border-bottom: var(--border);
    position: sticky;
    top: 0; left: 0; right: 0;
    z-index: 1000;
-}
-
-.header .flex{
-   padding: 1.5rem 2rem;
-   position: relative;
+ }
+ 
+ .header .flex{
    display: flex;
    align-items: center;
    justify-content: space-between;
-}
-
-.header .flex .logo{
+   position: relative;
+   padding: .3rem;
+ }
+ 
+ .header .flex .logo{
    font-size: 2.5rem;
    color: var(--black);
    font-weight: bolder;
-}
+   padding-right: 3rem;
+ }
+ 
+ 
+ #user-btn{
+   font-size: 2rem;
+   border-radius: 5rem;
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.5rem;
+   cursor: pointer;
+   text-align: center;
+   margin-right: 3rem;
+   color:var(--white);
+   background-color: var(--black);
+ }
+
+ #user-btn:hover{
+   background-color: rgb(201, 90, 109);
+ }
+ 
 
 .header .flex .search-form{
-   width: 50rem;
+   width: 40rem;
+   height: 3.7rem;
    border-radius: .5rem;
    display: flex;
    align-items: center;
-   gap: 2rem;
+   gap: 1rem;
    padding: 1.5rem 2rem;
    background-color: var(--light-bg);
 }
@@ -253,7 +283,7 @@ section{
 .header .flex .profile{
    position: absolute;
    top: 120%; right: 2rem;
-   background-color: var(--white);
+   background-color: var(--black);
    border-radius: .5rem;
    padding: 2rem;
    text-align: center;
@@ -277,7 +307,7 @@ section{
 
 .header .flex .profile h3{
    font-size: 2rem;
-   color: var(--black);
+   color: var(--white);
 }
 
 .header .flex .profile span{
@@ -285,25 +315,52 @@ section{
    font-size: 1.6rem;
 }
 
-.header .flex .profile .flex-btn{
-   margin-top: .5rem;
-}
+/* .header .flex .profile .flex-btn,
+.header .flex .profile .delete-btn{
+   margin-top: 1rem;
+} */
 
 
-.header .flex .navbar a{
-   display:block;
-   padding: 2rem;
-   margin: .5rem 0;
-   font-size: 1.8rem;
-}
+/* -----------------navbar -----------------*/
 
-.header .flex .navbar a span{
-   color: var(--light-color);
-}
-
-.header .flex .navbar a:hover{
-   background-color: var(--light-bg);
-}
+.navbar {
+   display: inline-flex;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 60%;
+ }
+ 
+ .navbar a {
+   display: inline-flex;
+   align-items: center;
+   text-decoration: none;
+   color: var(--black);
+   font-size: 2rem;
+   font-weight: 700;
+   transition: all 0.4s ease;
+   position: relative;
+ }
+ 
+ .navbar a::after {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: .25rem;
+   background-color: #fff;
+   transform: scaleX(0);
+   transition: transform 0.5s ease;
+ }
+ 
+ .navbar a:hover::after,
+ .navbar a:focus::after {
+   transform: scaleX(1);
+ }
+ 
+ .navbar a span:hover{
+   color:var(--main-color);
+ }
  
 
 .form-container{
@@ -314,31 +371,32 @@ section{
 }
 
 .form-container form{
-   background-color: var(--white);
    border-radius: .5rem;
    padding: 2rem;
+   background-color: var(--black);
+   box-shadow:0 20px 35px rgba(0,0,1,0.9);
 }
 
 .form-container .login{
-   width: 50rem;
+   width: 40rem;
 }
 
 .form-container .register{
-   width: 80rem;
+   width: 50rem;
 }
 
 .form-container form h3{
    text-align: center;
    font-size: 2.5rem;
    margin-bottom: 1rem;
-   color: var(--black);
+   color: var(--white);
    text-transform: capitalize;
 }
 
 .form-container form p{
    padding-top: 1rem;
    font-size: 1.7rem;
-   color: var(--light-color);
+   color: var(--white);
 }
 
 .form-container form p span{
@@ -349,14 +407,15 @@ section{
    padding-bottom: 1rem;
    text-align: center;
    font-size: 2rem;
+   color: var(--light-color);
 }
 
 .form-container .link a{
-   color: var(--main-color);
+   color: var(--white);
 }
 
 .form-container .link a:hover{
-   color: var(--black);
+   color: rgb(201, 90, 109);
    text-decoration: underline;
 }
 
@@ -367,16 +426,7 @@ section{
    font-size: 1.8rem;
    color: var(--black);
    padding: 1.4rem;
-   background-color: var(--light-bg);
-}
-
-.form-container .flex{
-   display: flex;
-   gap: 2rem;
-}
-
-.form-container .flex .col{
-   flex: 1 1 25rem;
+   background-color: var(--white);
 }
 
 .dashboard .box-container{
@@ -384,34 +434,35 @@ section{
    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
    align-items: flex-start;
    justify-content: center;
-   gap: 1.5rem;
+   gap: 3rem;
+   padding: 4rem 0;
 }
 
 .dashboard .box-container .box{
-   padding: 2rem;
+   padding: 3rem;
    border-radius: .5rem;
-   background-color: var(--white);
+   background-color: var(--black);
    text-align: center;
 }
 
 .dashboard .box-container .box h3{
    margin-bottom: .5rem;
    font-size: 2.5rem;
-   color: var(--black);
+   color: var(--white);
    margin-bottom: 1.5rem;
 }
 
 .dashboard .box-container .box p{
    font-size: 2rem;
    color: var(--light-color);
-   padding: 1rem 1.5rem;
+   padding: 1rem;
    border-radius: .5rem;
    background-color: var(--light-bg);
    margin: 1rem 0;
 }
 
 .mentor-profile .details{
-   background-color: var(--white);
+   background-color: var(--black);
    border-radius: .5rem;
    padding: 2rem;
    text-align: center;
@@ -431,7 +482,7 @@ section{
 
 .mentor-profile .details .mentor h3{
    font-size: 2.5rem;
-   color: var(--black);
+   color: var(--white);
    margin: .5rem 0;
 }
 
@@ -451,7 +502,7 @@ section{
 .mentor-profile .details .flex .box{
    flex: 1 1 26rem;
    border-radius: .5rem;
-   background-color: var(--light-bg);
+   background-color:#dddada;
    padding: 2rem;
 }
 
@@ -469,7 +520,7 @@ section{
 }
 
 .playlist-form form{
-   background-color: var(--white);
+   background-color: var(--black);
    border-radius: .5rem;
    padding: 2rem;
    padding-top: 1rem;
@@ -478,8 +529,8 @@ section{
 }
 
 .playlist-form form p{
-   font-size: 1.7rem;
-   color: var(--light-color);
+   font-size: 1.8rem;
+   color: var(--white);
    padding-top: 1rem;
 }
 
@@ -525,6 +576,10 @@ section{
    font-size: 2rem;
 }
 
+.playlist-form form .flex-btn .option-btn{
+   margin-top: 1rem;
+ }
+
 .playlists .box-container{
    display: grid;
    grid-template-columns: repeat(auto-fit, 35rem);
@@ -534,7 +589,7 @@ section{
 }
 
 .playlists .box-container .box{
-   background-color: var(--white);
+   background-color: var(--black);
    border-radius: .5rem;
    padding: 2rem;
    overflow-x:hidden;
@@ -600,10 +655,11 @@ section{
    content: '...';
 }
 
+
 .video-form form{
    max-width: 50rem;
    margin: 0 auto;
-   background-color: var(--white);
+   background-color: var(--black);
    border-radius: .5rem;
    padding: 2rem;
    padding-top: 1rem;
@@ -611,8 +667,8 @@ section{
 
 .video-form form p{
    padding-top: 1rem;
-   font-size: 1.7rem;
-   color: var(--light-color);
+   font-size: 1.8rem;
+   color: var(--white);
 }
 
 .video-form form p span{
@@ -725,10 +781,11 @@ section{
 
 .contents .box-container .box{
    border-radius: .5rem;
-   background-color: var(--white);
+   background-color: var(--black);
    padding: 2rem;
    overflow-x: hidden;
 }
+
 
 .contents .box-container .box .thumb{
    height: 20rem;
@@ -759,10 +816,17 @@ section{
 
 .contents .box-container .box .title{
    font-size: 2rem;
-   color: var(--black);
+   color: var(--white);
    line-height: 1.5;
    text-overflow: ellipsis;
    overflow-x: hidden;
+}
+
+.contents .box-container .box .btn{
+   display: block;
+   width: 100%;
+   margin-top: 1.5rem;
+   color:var(--white);
 }
 
 .view-content .container{
@@ -916,13 +980,10 @@ section{
 
 
 
-
-
-
 .footer{
    text-align: center;
   color: var(--black);
-  border-top: 1px solid #535169;
+  border-top: 1px solid #cacaca;
   font-size: 14px;
   padding: 30px;
   font-weight: 500;

@@ -4,7 +4,7 @@
   padding: 3rem 20rem 5rem;
 }
 
-.mentors .search-tutor{
+.mentors .search-mentor{
   margin-bottom: 2rem;
   border-radius: .5rem;
   background-color: var(--white);
@@ -14,21 +14,21 @@
   gap: 1.5rem;
 }
 
-.mentors .search-tutor input{
+.mentors .search-mentor input{
   width: 100%;
   background: none;
   font-size: 1.8rem;
   color: var(--black);
 }
 
-.mentors .search-tutor button{
+.mentors .search-mentor button{
   font-size: 2rem;
   color: var(--black);
   cursor: pointer;
   background:none;
 }
 
-.mentors .search-tutor button:hover{
+.mentors .search-mentor button:hover{
   color: var(--main-color);
 }
 
@@ -38,6 +38,16 @@
   gap: 1.5rem;
   justify-content: center;
   align-items: flex-start;
+}
+
+.mentors .heading{
+  font-size: 6rem;
+  color:var(--black);
+  text-transform: capitalize;
+  text-align: center;
+  padding-bottom: 4rem;
+  padding-top: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .mentors .intro{
@@ -50,65 +60,74 @@
 }
 
 .mentors .intro h3{
-  font-size: 3rem;
+  font-size: 3.8rem;
   color: var(--black);
   text-transform: capitalize;
-  padding-bottom: .5rem;
+  padding-bottom: .3rem;
 }
 
 .mentors .intro p{
   line-height: 1.7;
   padding: .5rem 1rem;
   color: var(--light-color);
-  font-size: 2rem;
+  font-size: 2.4rem;
 }
 
 .mentors .box-container .box{
-  background-color: var(--white);
   border-radius: .5rem;
-  padding: 2rem;
+  padding: 1.5rem;
+  background-color: var(--white);
+}
+
+.mentors .box-container .box p{
+  padding-top: 1rem;
+  font-size: 3rem;
+  color: var(--light-color);
+}
+
+.mentors .box-container .box p span{
+  color: var(--main-color);
 }
 
 .mentors .box-container .offer{
   text-align: center;
-  border: #333 .1rem solid;
+  border-radius: .5rem;
+  padding: 2rem 1.3rem;
+  background-color: var(--white);
 }
 
 .mentors .box-container .offer h3{
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: var(--black);
   text-transform: capitalize;
-  padding-bottom: .5rem;
 }
 
 .mentors .box-container .offer p{
-  line-height: 1.7;
-  padding: .5rem 0;
-  color: var(--light-color);
-  font-size: 1.7rem;
+  line-height: 1.5;
+  padding-bottom: .5rem;
 }
 
 
-.mentors .box-container .box .tutor{
+.mentors .box-container .box .mentor{
   display: flex;
   align-items: center;
-  gap:2rem;
+  gap:1rem;
   margin-bottom: 1.5rem;
 }
 
-.mentors .box-container .box .tutor img{
+.mentors .box-container .box .mentor img{
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
 }
 
-.mentors .box-container .box .tutor h3{
+.mentors .box-container .box .mentor h3{
   font-size: 2rem;
   color: var(--black);
   margin-bottom: .2rem;
 }
 
-.mentors .box-container .box .tutor span{
+.mentors .box-container .box .mentor span{
   font-size: 1.6rem;
   color: var(--light-color);
 }
@@ -130,7 +149,7 @@
   padding: 2rem;
 }
 
-.mentor-profile .details .tutor img{
+.mentor-profile .details .mentor img{
   height: 10rem;
   width: 10rem;
   border-radius: 50%;
@@ -138,13 +157,13 @@
   margin-bottom: 1rem;
 }
 
-.mentor-profile .details .tutor h3{
+.mentor-profile .details .mentor h3{
   font-size: 2rem;
   color: var(--black);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.mentor-profile .details .tutor span{
+.mentor-profile .details .mentor span{
   color: var(--light-color);
   font-size: 1.7rem;
 }
@@ -193,6 +212,10 @@
    font-size: 2rem;
    color: var(--red);
 }
+
+
+
+/* media queries */
 
 
 

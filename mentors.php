@@ -26,14 +26,13 @@ if(isset($_COOKIE['user_id'])){
 <body>
 <?php include 'components/user_header.php'; ?>
 
-<!-- mentors section starts  -->
 
 <section class="mentors" id=men>
 
    <h1 class="heading">Mentorship Hub</h1>
 
    <div class="intro offer">
-   <h3>Welcome to our STEM Mentorship Hub!</h3>
+      <h3>Welcome to our STEM Mentorship Hub!</h3>
       <p>We believe in the power of mentorship to inspire and empower the next generation of STEM leaders. Our mentorship program connects aspiring individuals with experienced professionals in science, technology, engineering, and mathematics, creating a supportive environment for knowledge sharing and personal growth.<br></p>
       
       
@@ -43,8 +42,9 @@ if(isset($_COOKIE['user_id'])){
    <div class="box-container">
       <div class="box offer">
          <h3>be a mentor</h3>
-         <p>Are you a STEM professional looking to inspire the next generation of innovators and problem solvers? We are seeking experienced mentors to join our STEM mentorship program.</p>
-         <a href="admin/register.php" class="inline-btn">apply</a>
+         <p>Are you a STEM professional looking to inspire the next generation of innovators and problem solvers? 
+         Join our STEM mentorship program and share your knowledge, experience, and passion with aspiring individuals.</p>
+         <a href="mentor_register.php" class="inline-btn">apply</a>
       </div>
 
    
@@ -81,10 +81,10 @@ if(isset($_COOKIE['user_id'])){
                <span><?= $fetch_mentor['profession']; ?></span>
             </div>
          </div>
-         <p>playlists : <span><?= $total_playlists; ?></span></p>
-         <p>total videos : <span><?= $total_contents ?></span></p>
-         <p>total likes : <span><?= $total_likes ?></span></p>
-         <p>total comments : <span><?= $total_comments ?></span></p>
+         <p>Email : <span><?= $fetch_mentor['email']; ?></span></p>
+         <p>Field of expertise : <span><?= $fetch_mentor['field_of_expertise']; ?></span></p>
+         <p>Availability : <span><?= $fetch_mentor['availability']; ?></span></p>
+         <p>Approach : <span><?= $fetch_mentor['approach']; ?></span></p>
          <form action="mentor_profile.php" method="post">
             <input type="hidden" name="mentor_email" value="<?= $fetch_mentor['email']; ?>">
             <input type="submit" value="view profile" name="mentor_fetch" class="inline-btn">

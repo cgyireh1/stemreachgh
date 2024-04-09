@@ -2,16 +2,16 @@
 
 include '../components/connect.php';
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
+if(isset($_COOKIE['mentor_id'])){
+   $mentor_id = $_COOKIE['mentor_id'];
 }else{
-   $tutor_id = '';
+   $mentor_id = '';
    header('location:login.php');
 }
 
 if(isset($_POST['delete_video'])){
    $delete_id = $_POST['video_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id = htmlspecialchars($delete_id);
    $verify_video = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
    $verify_video->execute([$delete_id]);
    if($verify_video->rowCount() > 0){
@@ -38,10 +38,10 @@ if(isset($_POST['delete_video'])){
 
 if(isset($_POST['delete_playlist'])){
    $delete_id = $_POST['playlist_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   $delete_id = htmlspecialchars($delete_id);
 
-   $verify_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND tutor_id = ? LIMIT 1");
-   $verify_playlist->execute([$delete_id, $tutor_id]);
+   $verify_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND mentor_id = ? LIMIT 1");
+   $verify_playlist->execute([$delete_id, $mentor_id]);
 
    if($verify_playlist->rowCount() > 0){
 
@@ -71,10 +71,8 @@ if(isset($_POST['delete_playlist'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Dashboard</title>
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
@@ -91,8 +89,8 @@ if(isset($_POST['delete_playlist'])){
    <?php
       if(isset($_POST['search']) or isset($_POST['search_btn'])){
       $search = $_POST['search'];
-      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE title LIKE '%{$search}%' AND tutor_id = ? ORDER BY date DESC");
-      $select_videos->execute([$tutor_id]);
+      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE title LIKE '%{$search}%' AND mentor_id = ? ORDER BY date DESC");
+      $select_videos->execute([$mentor_id]);
       if($select_videos->rowCount() > 0){
          while($fecth_videos = $select_videos->fetch(PDO::FETCH_ASSOC)){ 
             $video_id = $fecth_videos['id'];
@@ -134,8 +132,8 @@ if(isset($_POST['delete_playlist'])){
       <?php
       if(isset($_POST['search']) or isset($_POST['search_btn'])){
          $search = $_POST['search'];
-         $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE title LIKE '%{$search}%' AND tutor_id = ? ORDER BY date DESC");
-         $select_playlist->execute([$tutor_id]);
+         $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE title LIKE '%{$search}%' AND mentor_id = ? ORDER BY date DESC");
+         $select_playlist->execute([$mentor_id]);
          if($select_playlist->rowCount() > 0){
          while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
             $playlist_id = $fetch_playlist['id'];
@@ -188,7 +186,6 @@ if(isset($_POST['delete_playlist'])){
 
 
 
-<?php include '../components/footer.php'; ?>
 
 <script src="../js/admin_script.js"></script>
 
