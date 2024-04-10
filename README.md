@@ -23,8 +23,8 @@ This platform aims to empower girls in STEM (Science, Technology, Engineering, a
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/cgyireh1/north-stemreach.git`
-2. Navigate to the project directory: `cd north-stemreach`
+1. Clone the repository: `git clone https://github.com/cgyireh1/stemreachgh.git`
+2. Navigate to the project directory: `cd stemreachgh`
 
 
 ## Navigating (Usage)
