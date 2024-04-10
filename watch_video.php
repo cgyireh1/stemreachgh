@@ -12,7 +12,7 @@ if(isset($_GET['get_id'])){
    $get_id = $_GET['get_id'];
 }else{
    $get_id = '';
-   header('location:home.php');
+   header('location:index.php');
 }
 
 if(isset($_POST['like_content'])){
@@ -201,8 +201,6 @@ if(isset($_POST['update_now'])){
       <div class="mentor">
          <img src="uploaded_files/<?= $fetch_mentor['image']; ?>" alt="">
          <div>
-            <h3><?= $fetch_mentor['name']; ?></h3>
-            <span><?= $fetch_mentor['profession']; ?></span>
          </div>
       </div>
       <form action="" method="post" class="flex">

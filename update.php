@@ -30,18 +30,6 @@ if(isset($_POST['submit'])){
    $email = $_POST['email'];
    $email =  htmlspecialchars($email);
 
-   if(!empty($email)){
-      $select_email = $conn->prepare("SELECT email FROM `users` WHERE email = ?");
-      $select_email->execute([$email]);
-      if($select_email->rowCount() > 0){
-         $message[] = 'email already taken!';
-      }else{
-         $update_email = $conn->prepare("UPDATE `users` SET email = ? WHERE id = ?");
-         $update_email->execute([$email, $user_id]);
-         $message[] = 'email updated successfully!';
-      }
-   }
-
    $image = $_FILES['image']['name'];
    $image =  htmlspecialchars($image);
    $ext = pathinfo($image, PATHINFO_EXTENSION);

@@ -144,7 +144,7 @@ if(isset($_POST['delete_video'])){
    <?php
          }
       }else{
-         echo '<p class="empty">no videos added yet! <a href="add_content.php" class="btn" style="margin-top: 1.5rem;">add videos</a></p>';
+         echo '<p class="empty">no videos added yet! <a href="add_content.php" class="option-btn" style="margin-top: 1.5rem;">add videos</a></p>';
       }
    ?>
 

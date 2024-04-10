@@ -59,22 +59,22 @@
          <div class="box">
             <span><?= $total_playlists; ?></span>
             <p>total playlists</p>
-            <a href="playlists.php" class="btn">view playlists</a>
+            <a href="playlists.php" class="option-btn">view playlists</a>
          </div>
          <div class="box">
             <span><?= $total_contents; ?></span>
             <p>total videos</p>
-            <a href="contents.php" class="btn">view contents</a>
+            <a href="contents.php" class="option-btn">view contents</a>
          </div>
          <div class="box">
             <span><?= $total_likes; ?></span>
             <p>total likes</p>
-            <a href="contents.php" class="btn">view contents</a>
+            <a href="contents.php" class="option-btn">view contents</a>
          </div>
          <div class="box">
             <span><?= $total_comments; ?></span>
             <p>total comments</p>
-            <a href="comments.php" class="btn">view comments</a>
+            <a href="comments.php" class="option-btn">view comments</a>
          </div>
       </div>
    </div>

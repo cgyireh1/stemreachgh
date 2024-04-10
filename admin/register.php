@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
          $insert_mentor = $conn->prepare("INSERT INTO `mentors`(id, name, profession, email, password, image) VALUES(?,?,?,?,?,?)");
          $insert_mentor->execute([$id, $name, $profession, $email, $cpass, $rename]);
          move_uploaded_file($image_tmp_name, $image_folder);
-         $message[] = 'new mentor registered! please login now';
+         $message[] = 'registered successfully! please login now';
       }
    }
 

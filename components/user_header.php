@@ -16,7 +16,7 @@ if(isset($message)){
 
    <section class="flex">
 
-      <a href="home.php" class="logo"><img src="images/logo.png" alt="logo"></a>
+      <a href="index.php" class="logo"><img src="images/logo.png" alt="logo"></a>
 
       <div class="profile">
          <?php
@@ -48,10 +48,10 @@ if(isset($message)){
       </div>
 
       <nav class="navbar">
-         <a href="home.php">Home</a>
-         <a href="home.php#about">About</a>
-         <a href="home.php#courses">Courses</a>
-         <a href="home.php#mentorship">Mentorship</a>
+         <a href="index.php">Home</a>
+         <a href="index.php#about">About</a>
+         <a href="index.php#courses">Courses</a>
+         <a href="index.php#mentorship">Mentorship</a>
          <a href="dforum.php">Discussion-Forum</a>
          <a href="contact.php">Contact-Us</a>
       </nav>

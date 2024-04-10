@@ -711,14 +711,14 @@ section{
    gap: 2.5rem;
    flex-wrap: wrap;
    align-items: flex-start;
-   background-color: var(--white);
+   background-color: var(--black);
    border-radius: .5rem;
    padding: 2rem;
 }
 
 .playlist-details .row .thumb{
    flex: 1 1 40rem;
-   height: 30rem;
+   height: 50rem;
    position: relative;
 }
 
@@ -758,8 +758,8 @@ section{
 }
 
 .playlist-details .row .details .title{
-   font-size: 2rem;
-   color: var(--black);
+   font-size: 3rem;
+   color: var(--white);
    padding-bottom: .5rem;
 }
 
@@ -792,7 +792,7 @@ section{
    width: 100%;
    border-radius: .5rem;
    object-fit: cover;
-   margin: 1rem 0;
+   margin: .7rem 0;
 }
 
 .contents .box-container .box .flex{
