@@ -1,6 +1,6 @@
 <footer class="footer">
 
-    Copyright &copy; <span>northstemreach</span><?= date('y'); ?> .All rights reserved!
+    Copyright &copy; <span>northstemreach<?= date('y'); ?></span> .All rights reserved!
 
 
 </footer>

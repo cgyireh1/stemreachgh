@@ -1,7 +1,7 @@
 
 /* -----------------mentors----------------- */
 .mentors {
-  padding: 3rem 20rem 5rem;
+  padding: 3rem 15rem 5rem;
 }
 
 .mentors .search-mentor{
@@ -52,10 +52,8 @@
 
 .mentors .intro{
   border-radius: .5rem;
-  padding: 2rem;
-}
-
-.mentors .intro{
+  /*padding: 2rem;*/
+  padding:0;
   text-align: center;
 }
 
@@ -64,13 +62,16 @@
   color: var(--black);
   text-transform: capitalize;
   padding-bottom: .3rem;
+  text-align: center;
 }
 
 .mentors .intro p{
   line-height: 1.7;
-  padding: .5rem 1rem;
+  /*padding: .5rem 1rem;*/
+  padding: 0;
   color: var(--light-color);
   font-size: 2.4rem;
+  text-align: center;
 }
 
 .mentors .box-container .box{
@@ -92,7 +93,7 @@
 .mentors .box-container .offer{
   text-align: center;
   border-radius: .5rem;
-  padding: 2rem 1.3rem;
+  padding: 2rem 1rem;
   background-color: var(--white);
 }
 
@@ -199,10 +200,6 @@
 }
 
 
-.footer span{
-  color: teal;
-}
-
 .empty{
    background-color: var(--white);
    border-radius: .5rem;
@@ -225,25 +222,6 @@
      padding-left: 0;
   }
 
-  .navbar{
-     left: -30rem;
-     transition: .2s linear;
-  }
-
-  .navbar.active{
-     left: 0;
-     box-shadow: 0 0 0 100vw rgba(0,0,0,.8);
-     border-right: 0;
-  }
-
-  .mentorship .row .image img{
-    height: 60rem;
-  }
-
-  .mentorship .content h4,
-  .mentorship .content p {
-    text-align: center;
-  }
 
 }
 
@@ -253,37 +231,10 @@
     font-size: 55%;
   }
 
-  .mentorship .content h4,
-  .mentorship .content p {
-    text-align: center;
-  }
-
-  .mentorship .row .image img{
-    height: 75rem;
-  }
-
 }
 
 @media (max-width:768px){
-
-  #search-btn{
-     display: inline-block;
-  }
-
-  .mentorship .row .image img{
-    height: 55rem;
-  }
-
-  .mentorship h3, 
-  .mentorship .content h4,
-  .mentorship .content p {
-    text-align: center;
-  }
-
-  .navbar {
-    display: none;
-  }
-
+  
 }
 
 @media (max-width:450px){
@@ -295,6 +246,18 @@
   .flex-btn{
      gap: 0;
      flex-flow: column;
+  } 
+ 
+  .mentors .intro h3{
+    font-size: 2.8rem;
   }
-
+  
+  .mentors {
+    padding:2rem 7rem;
+  }
+ 
+  .mentors .intro p{
+    font-size: 1.6rem;
+    padding:0;
+  }
 }

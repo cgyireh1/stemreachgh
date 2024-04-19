@@ -112,8 +112,8 @@ if(isset($_POST['save_list'])){
       </div>
 
       <div class="col">
-         <div class="mentor">
-         </div>
+         <!-- <div class="mentor">
+         </div> -->
          <div class="details">
             <h3><?= $fetch_playlist['title']; ?></h3>
             <p><?= $fetch_playlist['description']; ?></p>
@@ -169,7 +169,7 @@ if(isset($_POST['save_list'])){
 
 
 
-
+<?php include 'components/footer.php'; ?>
 
 <script src="js/script.js"></script>
    

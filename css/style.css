@@ -49,6 +49,7 @@ html{
 body{
   background-color: pink;
   background:linear-gradient(to right,palevioletred,#c9d6ff); 
+  overflow-x: hidden;
 }
 
 body.dark{
@@ -411,6 +412,7 @@ section {
 
 .home-text{
   padding: 15rem 0;
+  /*text-align: center;*/
 }
 
 .home-text h1 {
@@ -456,7 +458,7 @@ section {
 
 
 .about .row .image{
-  flex: 1 1 20rem;
+  flex: 1 1 40rem;
 }
 
 .about .row .image img{
@@ -466,7 +468,7 @@ section {
 }
 
 .about .row .content{
-  flex: 1 1 20rem;
+  flex: 1 1 40rem;
 }
 
 .about .row .content p{
@@ -614,6 +616,7 @@ section {
   box-shadow:0 20px 35px rgba(0,0,1,0.9);
 }
 
+
 .form-container .login{
   width: 40rem;
 }
@@ -692,32 +695,32 @@ section {
 
 
 /* -----------------courses----------------- */
-.courses .box-container{
+.course .box-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem;
   justify-content: center;
   align-items: center;
   padding: 8rem 10rem;
 }
 
-.courses .box-container .box{
+.course .box-container .box{
   border-radius: .5rem;
-  background-color: var(--white);
+  background-color: var(--black);
   transition: all .40s ease;
   padding: 1rem;
 }
 
-.courses .box-container .box:hover{
+.course .box-container .box:hover{
   color: var(--white);
-  transform: translateY(-20px);
+  transform: translateY(-10px);
 }
 
-.courses .box-container .box .thumb{
+.course .box-container .box .thumb{
   position: relative;
 }
 
-.courses .box-container .box .thumb span{
+.course .box-container .box .thumb span{
   position: absolute;
   top:1rem; left: 1rem;
   border-radius: .5rem;
@@ -727,7 +730,7 @@ section {
   font-size: 1.5rem;
 }
 
-.courses .box-container .box .thumb img{
+.course .box-container .box .thumb img{
   width: 100%;
   height: 28rem;
   object-fit: cover;
@@ -735,17 +738,18 @@ section {
   padding: 0 0 4rem 0;
 }
 
-.courses .box-container .box .title{
+.course .box-container .box .title{
   font-size: 2.6rem;
-  color: var(--black);
+  color: var(--white);
   padding-bottom: .3rem;
 }
 
-.courses .more-btn{
+.course .more-btn{
   text-align: center;
   margin: 1rem 10rem;
 }
 
+.course h1, 
 .courses h1{
   font-size: 4rem;
   text-transform: capitalize;
@@ -759,8 +763,8 @@ section {
 /* ----------------- all courses ----------------- */
 .courses .box-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, 35rem);
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, 27rem);
+  gap: 3rem;
   align-items: flex-start;
   justify-content: center;
 }
@@ -816,6 +820,7 @@ section {
   margin-top: 2rem;
   text-align: center;
 }
+
 
 /* ----------------- video playlist ----------------- */
 .playlist .row{
@@ -962,7 +967,7 @@ section {
 .watch-video .video-details{
   background-color: transparent;
   padding: 2rem;
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
   border-radius: .5rem;
   margin-bottom: 5rem;
@@ -1080,8 +1085,8 @@ section {
 
 .videos-container .box-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, 35rem);
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, 33rem);
+  gap: 2rem;
   align-items: flex-start;
   justify-content: center;
 }
@@ -1089,7 +1094,7 @@ section {
 .videos-container .box-container .box{
   position: relative;
   border-radius: .5rem;
-  padding: 2rem 1rem;
+  padding: 2rem;
   background-color: var(--black);
   margin-bottom: 1rem;
 }
@@ -1123,6 +1128,7 @@ section {
   font-size: 2rem;
   color: var(--white);
   margin-top: 1rem;
+  padding:0;
 }
 
 .videos-container .box-container .box:hover h3{
@@ -1132,10 +1138,6 @@ section {
 
 /* ----------------- comments ----------------- */
 
-
-.comments{
-  padding: 4rem 20rem;
-}
 
 .comments h1{
   font-size: 2rem;
@@ -1149,6 +1151,7 @@ section {
   padding: 2rem;
   margin-bottom: 3rem;
 }
+
 
 .comments .add-comment .inline-btn{
   background-color: var(--black);
@@ -1345,9 +1348,10 @@ section {
 }
 
 .mentorship .row .image img{
-  width: auto;
+  max-width: 100%;
+  height: auto;
   height: 60rem;
-  padding: 0 0 0 5rem;
+  padding: 0;
   filter: drop-shadow(0 6rem 6rem rgba(0, 0, 0, 0.1));
 }
 
@@ -1968,7 +1972,8 @@ textarea::placeholder{
 
 .comments {
   margin: 40px 0;
-  background-color: var(--white);
+  background-color: transparent;
+  padding: 4rem 28rem;
 }
 
 .comment{
@@ -2030,29 +2035,6 @@ button:hover{
      padding-left: 0;
   }
 
-  .side-bar{
-     transition: .2s linear;
-     left: -30rem;
-  }
-
-  .side-bar.active{
-     left: 0;
-     box-shadow: 0 0 0 100vw rgba(0,0,0,.7);
-  }
-
-  .side-bar .close-side-bar{
-     display: block;
-  }
-
-  
-  .mentorship .row .image img{
-    height: 60rem;
-  }
-
-  .mentorship .content h4,
-  .mentorship .content p {
-    text-align: center;
-  }
 
 }
 
@@ -2060,15 +2042,6 @@ button:hover{
   
   html{
      font-size: 55%;
-  }
-
-  .mentorship .content h4,
-  .mentorship .content p {
-    text-align: center;
-  }
-
-  .mentorship .row .image img{
-    height: 75rem;
   }
 
 }
@@ -2103,27 +2076,45 @@ button:hover{
   .watch-video .video-details .video{
      height: 30rem;
   }
-
-  .mentorship .row .image img{
-    height: 55rem;
+  
+  .content {
+    width: 90%;
+    margin: 0 auto; 
   }
-
-  .mentorship h3, 
-  .mentorship .content h4,
-  .mentorship .content p {
-    text-align: center;
-  }
-
-  .about .row .content h3, 
-  .about .row .content p{
-    text-align: center;
-  } 
-
-
-  .navbar {
+  
+  .contact-content {
     display: block;
   }
+  
+  .about .content {
+    padding: 1rem; 
+    text-align:center;
+  }
+  
+  .mentorship .row {
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
+  }
 
+  .mentorship .row .image {
+    margin-bottom: 1rem;
+  }
+  
+  .mentorship .row .image img{
+    height:auto;
+    max-width:100%;
+  }
+  
+  .home-text{
+  text-align: center;
+  }
+  
+  /*.main-contact {*/
+  /*  display: grid;*/
+  /*  grid-template-columns: 1fr;*/
+    
+  /*}*/
 }
 
 @media (max-width:450px){
@@ -2153,7 +2144,7 @@ button:hover{
      height: auto;
   }
 
-  .courses .box-container{
+  .course .box-container{
      grid-template-columns: 1fr;
   }
 
@@ -2161,7 +2152,7 @@ button:hover{
      grid-template-columns: 1fr;
   }
 
-  .teachers .box-container{
+  .mentors .box-container{
      grid-template-columns: 1fr;
   }
 
@@ -2172,10 +2163,62 @@ button:hover{
   .home-grid .box-container{
     grid-template-columns: 1fr;
   }
-
- .about .row .image img{
-    height: 30rem;
+  
+  /*.main-contact {*/
+  /*  display: grid;*/
+  /*  grid-template-columns: repeat(2, 1fr);*/
+    /*grid-template-columns: 1fr 1fr;*/
+  /*}*/
+  
+  /* .contact-content {*/
+  /*  width: auto; */
+  /*  margin-bottom: 0;*/
+  /*}*/
+  
+  .about .content {
+    padding: 1rem; 
+    text-align:center;
   }
+  
+  .mentorship .row {
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
+  }
+
+  .mentorship .row .image {
+    margin-bottom: 1rem;
+  }
+  
+  .mentorship .row .image img{
+    height:auto;
+    max-width:100%;
+  }
+  
+  .home-text{
+    text-align: center;
+  }
+  
+  .navbar {
+    display:block;
+  }
+  
+  .navbar a {
+    padding: 0 4px;
+  }
+
+  .navbar a:not(:last-child) {
+    margin-right: 3px;
+  }
+  
+  .mentorship .row .content p{
+    padding: 0;
+  }
+ 
+ .videos-container .box-container{
+    padding:3rem 6rem;
+  }
+ 
 }
 
 
@@ -2243,5 +2286,51 @@ button:hover{
   .btn {
     padding: 0.45rem 1.2rem;
   }
+  
+  
+  .comments .add-comment,
+  .comments .show-comments{
+    width:100%;
+  }
+  
+  .comments .add-comment .inline-btn{
+    width: 40%;
+  }
+  
+  .watch-video .video-details{
+    width: 90%;
+  }
+  
+  .watch-video .video-details .video{
+    height: 30rem;
+  }
+  
+  .playlist .row{
+    width: 88%;
+  }
+  
+  .videos-container h3{
+    font-size: 3rem;
+    padding: 1rem;
+  }
+  
+  .profile .details{
+    padding: 6rem;
+    width: 45rem;
+  }
+  
+  .form-container .register{
+    width: 90%;
+  }
+  
+  .main-contact {
+    display: grid;
+    /*grid-template-columns: repeat(2, 1fr);*/
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  /* .contact-content {*/
+  /*  margin-bottom: 0;*/
+  /*}*/
 }
 

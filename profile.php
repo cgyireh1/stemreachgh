@@ -99,13 +99,6 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 
 
-
-
-
-
-
-
-
 <script src="js/script.js"></script>
    
 </body>

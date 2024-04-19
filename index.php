@@ -71,7 +71,7 @@ if(isset($_COOKIE['user_id'])){
 
    <!-- course section starts  -->
 
-   <section class="courses" id="courses">
+   <section class="course" id="courses">
     <h1 class="heading">Course Categories</h1>
 
     <div class="box-container">
@@ -174,7 +174,7 @@ if(isset($_COOKIE['user_id'])){
         <a href="#about">About</a>
         <a href="#courses">Courses</a>
         <a href="mentors.php">Mentorships</a>
-        <a href="dforum.php">Discussion Forum</a>
+        <a href="events.php">Discussion Forum</a>
         <a href="events.php">Events</a>
         <a href="contact.php">Contact</a>
       </div>
@@ -184,7 +184,7 @@ if(isset($_COOKIE['user_id'])){
         <a href="login.php">Login</a>
         <a href="register.php">Sign Up</a>
         <a href="events.php">Women in STEM</a>
-        <a href="admin/register.php">Apply As Mentor</a>
+        <a href="mentor_register.php">Apply As Mentor</a>
         <a href="mentors.php">Find Mentor</a>
         <a href="events.php">Blog</a>
       </div>
@@ -200,10 +200,6 @@ if(isset($_COOKIE['user_id'])){
 
   
   <?php include 'components/footer.php'; ?>
-
-
-
-
 
 
 <script src="js/script.js"></script>
